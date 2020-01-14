@@ -1,8 +1,12 @@
 body {
     background-image: url(../img/beijing@1x.png);
     background-position:center 0;
+<<<<<<< HEAD
     background-repeat: no-repeat;
 	
+=======
+    background-repeat: repeat;
+>>>>>>> cf470c2fbbed39dcde254b09bea4b3d9922a5d2c
 
 }
 .main{

@@ -53,7 +53,7 @@
                     实时记录
                 </div>
                 <div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
-                    报警记录1
+                    报警记录
                 </div>
             </div>
 
@@ -88,16 +88,17 @@
         <div class="search">
             <div class="companyname fl">浙江杭州网络科技有限公司</div>
 
-            <div class="type fl">
-                <span>设备类型</span>
-                <select name="" id="">
-                    <option value="">探测器</option>
+            <div class="type fl" id="floorid">
+                <span>选择楼层</span>
+                <select name="" id="selectFloor" style="background-color: #0a2336;">
                 </select>
             </div>
             <div class="equipment fl">
                 <span>选择设备</span>
-                <select name="" id="">
+                <select name="" id="equipmentid">
                     <option value="">探测器</option>
+                    <option value="">控制器</option>
+                    <option value="">输出模块</option>
                 </select>
             </div>
             <div class="date fl">
@@ -107,10 +108,10 @@
                 <input type="text" class="fl" id="endTime" style="color: #FFFFFF;">
             </div>
             <div class="chaxun fl" style="margin-left: 100px;">
-                <button style="color:white; font-size: 14px;">查询</button>
+                <button style="color:white; font-size: 14px;" id="searchTable">查询</button>
             </div>
             <div class="export fl">
-                <button style="color:white; font-size: 14px;">EXCEL导出</button>
+                <button style="color:white; font-size: 14px;" id="exportTable">EXCEL导出</button>
             </div>
         </div>
         <div class="data fl " style="width:100%">
@@ -132,177 +133,8 @@
                     <th>状态</th>
                     <th>检测值</th>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="check_item" type="checkbox" style="background-color: transparent;">
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                <tbody id="callRecordtbd">
+
                 </tbody>
             </table>
             <div class="paging">
@@ -319,6 +151,7 @@
         </div>
     </div>
     <script>
+        var user = JSON.parse(localStorage.getItem("user"));
         function jilu() {
             console.log("jilu")
             document.getElementById("ssjl").style.backgroundColor = "#1d4555"
@@ -364,6 +197,139 @@
             pickTime: true
         });
 
+        // 下拉框选择楼层
+
+        $('#floorid').on('click', function () {
+            $('#selectFloor').empty()
+            // var req = { cid: 1008 }
+            $.ajax({
+                url: "http://49.235.203.189:8087/jeecg-boot/monitor/floorPlan/queryFloorNameAndIdByCid",
+                type: "GET",
+                dataType: "json", //返回格式为json
+                // contentType: "application/json",
+                // data: JSON.stringify(req),
+                data: { cid: 1001 },
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-Access-Token",
+                        user.token
+                    );
+                },
+                success: function (data) {
+                    var floorResult = data.result
+                    floorResult.forEach((value) => {
+                        var opt = `<option>${value.floorName}</option>`
+                        console.log(opt)
+                        $('#selectFloor').append(opt)
+                    })
+                }
+            });
+        })
+        // 导出表
+        $('#exportTable').on('click', function () {
+            // 报警时间
+            $('.EalarmTime')
+
+            var req = {
+                alarmTime: ''
+            }
+            $.ajax({
+                url: "http://49.235.203.189:8087/jeecg-boot /monitor/alarmRecord/exportXls",
+                type: "GET",
+                dataType: "json", //返回格式为json
+                // contentType: "application/json",
+                data: JSON.stringify(req),
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-Access-Token",
+                        user.token
+                    );
+                },
+                success: function (data) {
+                    console.log(data)
+                }
+            });
+        })
+        // 查询表
+        $('#searchTable').on('click', function () {
+            // 获取alarmTime_begin	报警开始时间
+            var alarmTime_begin = $('#startTime').val()
+            alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
+            var alarmTime_begin1 = new Date(alarmTime_begin);
+            alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
+            console.log(alarmTime_begin1)
+            // 获取alarmTime_end	报警结束时间
+            var alarmTime_end = $('#endTime').val()
+            alarmTime_end = alarmTime_end.replace(/-/g, '/');
+            var alarmTime_end1 = new Date(alarmTime_end);
+            alarmTime_end1 = alarmTime_end1.getTime() / 1000;
+            console.log(alarmTime_end1)
+            console.log(alarmTime_begin, alarmTime_end)
+            //获取oneAreaId省份id
+            console.log(user)
+
+            //获取twoAreaId城市id
+
+            // 客户IDcustomerId 1008
+
+            // 获取设备类型alarmDeviceType
+
+            // 获取楼层名floorName
+            var selectFloorValue = $('#selectFloor').val()
+            console.log(selectFloorValue)
+
+            // 获取页码数pageNo
+
+            // 获取每页数pageSize
+            console.log(window.localStorage)
+            var req = {
+                alarmTime_begin: alarmTime_begin1,
+                alarmTime_end: alarmTime_end1,
+                oneAreaId: '',
+                twoAreaId: '',
+                customerId: 1008,
+                alarmDeviceType: '',
+                floorName: selectFloorValue,
+                pageNo: 5,
+                pageSize: 8,
+            }
+            $.ajax({
+                url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarm",
+                type: "GET",
+                dataType: "json", //返回格式为json
+                contentType: "application/json",
+                // data: JSON.stringify(req),
+                beforeSend: function (request) {
+                    request.setRequestHeader("X-Access-Token",
+                        user.token
+                    );
+                },
+                success: function (data) {
+                    console.log(data.result.records)
+                    var callRecordtbdValue = data.result.records
+                    callRecordtbdValue.forEach((value) => {
+                        var tr = ` <tr>
+                            <td style="width:50px">
+                                <input class="check_item" type="checkbox" style="background-color: transparent;">
+                            </td>
+                            <td class="EalarmTime">${value.alarmTime}</td>     //报警时间
+                            <td class="Estatus">${value.tstatus}</td>       //警报类型
+                            <td class="EoneAreaName">${value.oneAreaName}</td>   //省份
+                            <td class="EtwoAreaName">${value.twoAreaName}</td>   //城市
+                            <td class="Ename">${value.name}</td>          //客户名称
+                            <td class="EporjectName">${value.porjectName}</td>   //项目名称
+                            <td class="EalarmDeviceImei">${value.alarmDeviceImei}</td>   //设备IMEI
+                            <td class="EdetectionTarget">${value.detectionTarget}</td>   //探测目标
+                            <td class="Eranges">${value.ranges}</td>            //量程
+                            <td class="Eunit">${value.unit}</td>              //单位
+                            <td class="EalarmState">${value.alarmState}</td>        //状态
+                            <td class="EalarmPv">${value.alarmPv}</td>           //检测值
+
+                        </tr>`
+                        $('#callRecordtbd').append(tr)
+                    })
+
+                }
+            });
+        })
     </script>
 
 </body>
