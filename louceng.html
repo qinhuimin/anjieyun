@@ -8,6 +8,8 @@
 		 <script src="js/province.js" type="text/javascript" charset="utf-8"></script> -->
 		<!-- <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/ec.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/louceng.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			body{
 				margin: 0;
@@ -91,30 +93,15 @@
 		<div id="" style="background-image: url(img/beijing@1x.png);width: 100%;height: 969px;overflow: hidden;">
 			<div id="left_content" style="float: left;width: 15%;height: 929px;display: block;">
 				<table border="1px" cellspacing="0" cellpadding="10" style="border-color: #2b4d9b;border-width: 1px;width: 90%;height: 200px;margin: 0 auto;margin-top: 20px;color: #FFFFFF;text-align: center;">
+					
 					<tr>
 						<th>楼层名称</th>
 						<th></th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>Data</td>
-					</tr>
+					<tbody id="loucengall">
+						
+					</tbody>
+					
 				</table>
 				<div id="" style="margin-top: 50px;">
 					<div id="" style="text-align: center;color: #6de7ff;height: 50px;line-height: 50px;border-bottom: 1px solid #343a62;font-size: 22px;font-weight: 700;">
@@ -123,19 +110,28 @@
 					<div id="" style="">
 						<div id="" style="width: 90%;margin: 0 auto;margin-top: 20px;text-align: center;font-weight: 700;">
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<div id="allcount">
+									0
+								</div>
+								
 								<div id="">
-									维护设备
+									设备总数
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+							   <div id="normalcount">
+							   	0
+							   </div>
+								
 								<div id="">
-									维护设备
+									正常设备
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								
+								<div id="whsb">
+									23
+								</div>
 								<div id="">
 									维护设备
 								</div>
@@ -144,21 +140,30 @@
 						<div id="" style="clear: both;"></div>
 						<div id="" style="width: 90%;margin: 0 auto;margin-top: 50px;text-align: center;font-weight: 700;">
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								
+								<div id="gzsb">
+									23
+								</div>
 								<div id="">
-									维护设备
+									设备故障
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								
+								<div id="txgz">
+									23
+								</div>
 								<div id="">
-									维护设备
+									通讯故障
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								
+								<div id="bjsb">
+									23
+								</div>
 								<div id="">
-									维护设备
+									报警设备
 								</div>
 							</div>
 						</div>

@@ -2,9 +2,11 @@ body {
     background-image: url(../img/beijing@1x.png);
     background-position:center 0;
     background-repeat: no-repeat;
+	
 
 }
 .main{
+	
     /* width: 1280px; */
     /* margin: 0 auto; */
 }

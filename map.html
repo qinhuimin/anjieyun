@@ -93,17 +93,21 @@
 		</div>
 		<div id="">
 			<div id="" style="border: 2px solid #204eb2;color: #FFFFFF;position: fixed;right: 50px; top: 80px;z-index: 999999999;background-color: #0b0f17;width: 500px;height: 200px;opacity: 0.7;">
-				<div id="" style="float: left;width: 20px;height: 200px;background-color: #2857b3;line-height: 200px;">
+
+				<div onclick="show1()" id="" style="float: left;width: 20px;height: 200px;background-color: #2857b3;line-height: 200px;">
 					<img src="img/point.png" style="width: 16px;height: 25px;">
 				</div>
-				<div id="" style="text-align: center;color: #0fd4db;font-size: 20px;height: 50px;line-height: 50px;font-weight: 700;border-bottom: 1px solid #343a62;">
-					实时报警窗口
-				</div>
+				<div id="view1">
 
 
-				<table id="table" style="text-align: center;width: 480px;height: 150px;">
+					<div id="" style="text-align: center;color: #0fd4db;font-size: 20px;height: 50px;line-height: 50px;font-weight: 700;border-bottom: 1px solid #343a62;">
+						实时报警窗口
+					</div>
 
-					<!-- <tr>
+
+					<table id="table" style="text-align: center;width: 480px;height: 150px;">
+
+						<!-- <tr>
 						<td>2019-12-12 12:12:12</td>
 						<td>河北邯郸市</td>
 						<td>ASD00001</td>
@@ -127,8 +131,8 @@
 						<td>ASD00001</td>
 						<td style="color: red;">异常</td>
 					</tr> -->
-				</table>
-
+					</table>
+				</div>
 
 			</div>
 			<div id="" style="border: 2px solid #204eb2;color: #FFFFFF;position: fixed;right: 50px; top: 300px;z-index: 99999;background-color: #0b0f17;width: 500px;height: 230px;opacity: 0.7;">
@@ -142,20 +146,30 @@
 
 				<div id="" style="width: 400px;height:100px;border-bottom: 1px solid #343a62;border-left: 1px solid #343a62;margin: 0 auto;margin-top: 30px;">
 					<div id="">
-						<div id="" style="background-color: #29d197;width: 20px;height: 50px;float: left;margin-left: 50px;">
+						<div id="" style="background-color: #29d197;width: 20px;height: 100px;float: left;margin-left: 50px;">
+							<div id="zhu1" style="background-color: #0b0f17;width: 20px;height: 80px;float: left;">
 
+							</div>
 						</div>
 						<div id="" style="background-color: #1690f1;width: 20px;height: 100px;margin-left: 50px;float: left;">
+							<div id="zhu2" style="background-color: #0b0f17;width: 20px;height: 100px;float: left;">
 
+							</div>
 						</div>
 						<div id="" style="background-color: #f08400;width: 20px;height: 100px;margin-left: 50px;float: left;">
+							<div id="zhu3" style="background-color: #0b0f17;width: 20px;height: 80px;float: left;">
 
+							</div>
 						</div>
 						<div id="" style="background-color: #e31c14;width: 20px;height: 100px;margin-left: 50px;float: left;">
+							<div id="zhu4" style="background-color: #0b0f17;width: 20px;height: 80px;float: left;">
 
+							</div>
 						</div>
 						<div id="" style="background-color: #973dbd;width: 20px;height: 100px;margin-left: 50px;float: left;">
+							<div id="zhu5" style="background-color: #0b0f17;width: 20px;height: 80px;float: left;">
 
+							</div>
 						</div>
 					</div>
 
@@ -235,15 +249,29 @@
 </html>
 <script type="text/javascript">
 	var user = JSON.parse(localStorage.getItem("user"));
+	console.log(localStorage.getItem("selprovince"))
+	if(localStorage.getItem("selprovince")!=null){
+		$("#sfmr").text(localStorage.getItem("selprovince"))
+	}
+	if(localStorage.getItem("selcity")!=null){
+		$("#mrcity").text(localStorage.getItem("selcity"))
+	}
+	if(localStorage.getItem("selcommay")!=null){
+		$("#gsname").text(localStorage.getItem("selcommay"))
+	}
 	var provinceid = ""; //当前省的id
 	var cityid = ""; //当前市的id
 	var currentcitys = [];
 	var companys = [];
+	var op2=[];
 	console.log(user)
 	$(function() {
 		// ssbj()
 		ssbjall()
 		sbqk()
+		//用户设备情况
+		yhsbqk()
+		
 		// getkehubyuid();
 	})
 	// 百度地图API功能
@@ -273,8 +301,8 @@
 	map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);
 
-	function addMarker(point, name,url) {
-		var myIcon = new BMap.Icon("http://49.235.203.189:8087/jeecg-boot/sys/common/view/"+url, new BMap.Size(64, 64));
+	function addMarker(point, name, url) {
+		var myIcon = new BMap.Icon("http://49.235.203.189:8087/jeecg-boot/sys/common/view/" + url, new BMap.Size(64, 64));
 		var marker = new BMap.Marker(point, {
 			icon: myIcon
 		});
@@ -328,8 +356,12 @@
 		label.setStyle(labelStyle);
 		return label;
 	}
-	//设备情况
-	function sbqk(){
+
+	function show1() {
+		$("#view1").css("display", "none")
+	}
+	//用户设备情况
+	function yhsbqk(){
 		var req = {
 		
 			uid: user.userId
@@ -338,7 +370,7 @@
 		
 		$.ajax({
 		
-			url: "http://49.235.203.189:8087/jeecg-boot/monitor/device/queryDeviceCountByUid",
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarmCountByUid",
 			type: "get",
 			// contentType: "application/json",
 			dataType: "json",
@@ -351,9 +383,106 @@
 			},
 			success: function(data) {
 				console.log(data)
-			
+		           var obj1,obj2,obj3={}
 				if (data.success) {
-						
+					
+					obj1={
+						name:"探测器",
+						value:data.result.detectorCount
+					}
+					obj2={
+						name:"控制器",
+						value:data.result.controllerCount
+					}
+					obj3={
+						name:"输入模块",
+						value:data.result.outCount
+					}
+					op2.push(obj1)
+					op2.push(obj2)
+					op2.push(obj3)
+					option3 = {
+						tooltip: {
+							trigger: 'item',
+							formatter: '{a} <br/>{b}: {c} ({d}%)'
+						},
+					
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['50%', '70%'],
+							avoidLabelOverlap: false,
+							label: {
+								normal: {
+									show: false,
+									position: 'center'
+								},
+								emphasis: {
+									show: true,
+									textStyle: {
+										fontSize: '30',
+										fontWeight: 'bold'
+									}
+								}
+							},
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							data:op2
+						}]
+					};
+					// 使用刚指定的配置项和数据显示图表。
+					// myChart.setOption(option);
+					myChart3.setOption(option3);
+					myChart2.setOption(option3);
+					// console.log(op2)
+					// localStorage.setItem("op2",JSON.stringify(op2))
+					
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+	//设备情况
+	function sbqk() {
+		var req = {
+
+			uid: user.userId
+
+		}
+
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/device/queryDeviceCountByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				//总数定30
+				console.log(data)
+				var normal=data.result.deviceNormalCount
+				var weihu=data.result.deviceDefendCount
+				var sbgz=data.result.deviceFaultCount
+				var txgz=data.result.deviceCommFailCount
+				var bjsb=data.result.deviceAlertCount
+
+				if (data.success) {
+                 $("#zhu1").css("height",(1-normal/30)*100+"px")
+				 $("#zhu2").css("height",(1-weihu/30)*100+"px")
+				 $("#zhu3").css("height",(1-sbgz/30)*100+"px")
+				 $("#zhu4").css("height",(1-txgz/30)*100+"px")
+				 $("#zhu5").css("height",(1-bjsb/30)*100+"px")
 				}
 			},
 			error: function() {
@@ -362,39 +491,40 @@
 		});
 	}
 	//退出
-	 function logout(){
-	   var req = {
-	   
-	   	uid: user.userId
-	   
-	   }
-	   
-	   $.ajax({
-	   
-	   	url: "http://49.235.203.189:8087/jeecg-boot/sys/logout",
-	   	type: "get",
-	   	// contentType: "application/json",
-	   	dataType: "json",
-	   	data: req,
-	   	beforeSend: function(request) {
-	   		request.setRequestHeader("X-Access-Token",
-	   			user.token
-	   		);
-	   
-	   	},
-	   	success: function(data) {
-	   		console.log(data)
-	   	
-	   		if (data.success) {
-				localStorage.removeItem("user")
-	   			window.location.href="index.html"
-	   		}
-	   	},
-	   	error: function() {
-	   		console.log("请求失败");
-	   	}
-	   });
-   }
+	function logout() {
+		var req = {
+
+			uid: user.userId
+
+		}
+
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/sys/logout",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data)
+
+				if (data.success) {
+					localStorage.removeItem("user")
+					window.location.href = "index.html"
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+
 	function ssbjall() {
 		var req = {
 
@@ -421,9 +551,9 @@
 				if (data.success) {
 					$.each(data.result, function(i, item) {
 						table_datas += '<tr>' +
-							'<td>'+item.alarmTime+'</td>' +
-							'<td>'+item.installationPosition+'</td>' +
-							'<td>'+item.deviceNum+'</td>' +
+							'<td>' + item.alarmTime + '</td>' +
+							'<td>' + item.installationPosition + '</td>' +
+							'<td>' + item.deviceNum + '</td>' +
 							'<td style="color: aqua;">正常</td>' +
 							'</tr>'
 					})
@@ -495,7 +625,7 @@
 					$.each(data.result, function(i, item) {
 
 						var point = new BMap.Point(item.longitude, item.latitude);
-						addMarker(point, item.name,item.custLogo)
+						addMarker(point, item.name, item.custLogo)
 					})
 				}
 			},
@@ -529,6 +659,8 @@
 				if (data.success) {
 					currentcitys = data.result;
 					provinceid = str;
+					localStorage.setItem("provinceid",str)
+					
 					getkehubyuid(str, "", "")
 				}
 			},
@@ -540,6 +672,7 @@
 		// initcity(str)
 
 		$("#sfmr").text(title)
+		localStorage.setItem("selprovince",title)
 	}
 
 	function tee(str, title) {
@@ -566,6 +699,7 @@
 				if (data.success) {
 					companys = data.result
 					cityid = str
+					localStorage.setItem("cityid",str)
 					getkehubyuid(provinceid, str, "")
 				}
 			},
@@ -577,10 +711,14 @@
 
 
 		$("#mrcity").text(title)
+		localStorage.setItem("selcity",title)
 	}
 
 	function teee(id, companyname) {
 		$("#gsname").text(companyname)
+		localStorage.setItem("selcommay",companyname)
+		console.log("当前客户id"+id)
+		localStorage.setItem("khid",id)
 		getkehubyuid(provinceid, cityid, id)
 	}
 
@@ -722,53 +860,9 @@
 	// 		type: 'bar'
 	// 	}]
 	// };
-	option2 = {
-		tooltip: {
-			trigger: 'item',
-			formatter: '{a} <br/>{b}: {c} ({d}%)'
-		},
-
-		series: [{
-			name: '访问来源',
-			type: 'pie',
-			radius: ['50%', '70%'],
-			avoidLabelOverlap: false,
-			label: {
-				normal: {
-					show: false,
-					position: 'center'
-				},
-				emphasis: {
-					show: true,
-					textStyle: {
-						fontSize: '30',
-						fontWeight: 'bold'
-					}
-				}
-			},
-			labelLine: {
-				normal: {
-					show: true
-				}
-			},
-			data: [{
-					value: 335,
-					name: '直接访问'
-				},
-				{
-					value: 310,
-					name: '邮件营销'
-				},
-				{
-					value: 234,
-					name: '联盟广告'
-				}
-
-			]
-		}]
-	};
+	
+	
 	// 使用刚指定的配置项和数据显示图表。
 	// myChart.setOption(option);
-	myChart2.setOption(option2);
-	myChart3.setOption(option2);
+	
 </script>
