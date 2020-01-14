@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/index.css">
+		<script src="./js/gVerify.js"></script>
+
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="registerframe">
+				
+				<div class="logo">
+					<img src="./img/logo.png" alt="">
+				</div>
+				<div id="log">
+					<div class="userName">
+						<input class="userNameIpt" type="text" placeholder="请输入用户名">
+					</div>
+					<div class="passWord">
+						<input class="passWordIpt" type="text" placeholder="请输入密码">
+					</div>
+					
+					<div class="code fl">
+						<input class="codeIpt" id="code_input" type="text" placeholder="验证码">
+					</div>
+					
+					<div class="codeImg fl" id="codeImg">
+					
+					</div>
+					<div style="clear: both;"></div>
+					<div class="register">
+						<button id="register">登录系统</button>
+					</div>
+					<div class="forgetPass">忘记密码</div>
+				</div>
+				<div id="wjpwd" style="display: none;">
+					<div class="userName">
+						<input class="userNameIpt" id="wjname"  type="text" placeholder="请输入用户名">
+					</div>
+					<div class="passWord">
+						<input class="passWordIpt" type="text" id="newpwd" placeholder="请输入新密码">
+					</div>
+					
+					<div class="code fl">
+						<input class="codeIpt" id="wjcode_input" type="text" placeholder="输入您的验证码">
+					</div>
+					
+					<div class="codeImg fl" id="sendcode">
+					      发送验证码
+					</div>
+					<div style="clear: both;"></div>
+					<div class="register">
+						<button id="resetpwd">修改</button>
+					</div>
+					<div class="forgetPass1" id="tolog">返回登陆</div>
+				</div>
+				
+				
+			</div>
+		</div>
+
+		<script>
+			var key = "";
+			var code = ""
+			$(function() {
+				$.ajax({
+					url: "http://49.235.203.189:8087/jeecg-boot/sys/getCheckCode",
+					type: "get",
+					success: function(data) {
+						key = data.result.key;
+						code = data.result.code;
+						$("#codeImg").text(data.result.code);
+					}
+				});
+			})
+			$("#sendcode").click(function(){
+				var req = {
+					username: $("#wjname").val()
+				}
+				$.ajax({
+					url: "http://49.235.203.189:8087/jeecg-boot/sys/shortMessage",
+					type: "POST",
+					 dataType:"json", //返回格式为json
+					
+					data:req,
+					success: function(data) {
+						console.log(data)
+						
+					}
+				});
+			})
+			$("#resetpwd").click(function(){
+				var req = {
+					sysmodal: $("#wjname").val(),
+					code:$("#wjcode_input").val(),
+					username:$("#wjname").val(),
+					password:$("#newpwd").val()
+				}
+				$.ajax({
+					url: "http://49.235.203.189:8087/jeecg-boot/sys/retrievePassword",
+					type: "POST",
+					contentType: "application/json",
+					// dataType:"json",
+					data:JSON.stringify(req),
+					success: function(data) {
+						console.log(data)
+						
+					}
+				});
+			})
+			$("#tolog").click(function(){
+				console.log("a")
+				$("#log").css("display","block")
+				$("#wjpwd").css("display","none")
+			})
+			$(".forgetPass").click(function(){
+				console.log("dfsa")
+				$("#log").css("display","none")
+				$("#wjpwd").css("display","block")
+			})
+			$("#register").click(function() {
+				console.log(key)
+				var req = {
+					username: $(".userNameIpt").val(),
+					password: $(".passWordIpt").val(),
+					captcha: $("#code_input").val(),
+					checkKey: key
+				}
+				$.ajax({
+					url: "http://49.235.203.189:8087/jeecg-boot/sys/login",
+					type: "POST",
+					dataType:"json", //返回格式为json
+					contentType: "application/json",
+					data:JSON.stringify(req),
+					success: function(data) {
+						console.log(data)
+						
+						if(data.success){
+							localStorage.setItem("user",JSON.stringify(data.result))
+							window.location.href="map.html";
+							
+						}
+					}
+				});
+			})
+
+
+
+			//      var verifyCode = new GVerify("codeImg");
+			//      console.log(verifyCode)
+			//      document.getElementById("register").onclick = function () {
+
+			//          console.log(111)
+			//          var res = verifyCode.validate(document.getElementById("code_input").value);
+			//          if (res) {
+			//              alert("验证正确");
+			//          } else {
+			//              alert("验证码错误");
+			//          }
+			//      }
+		</script>
+	</body>
+
+</html>

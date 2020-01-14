@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>报警记录</title>
+    <link rel="stylesheet" href="./css/data.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="./css/foundation-datepicker.css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/date/jquery-1.11.3.min.js"></script>
+    <script src="./js/date/foundation-datepicker.js"></script>
+    <script src="./js/date/foundation-datepicker.zh-CN.js"></script>
+    <style>
+        #pagenumber {
+            display: inline-block;
+            width: 30px;
+            height: 15px;
+            text-align: center;
+            line-height: 11px;
+            border: 1px solid #fff;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .pageline {
+            display: inline-block;
+            width: 10px;
+            height: 1px;
+            background-color: #FFF;
+        }
+    </style>
+</head>
+<!-- 实时数据无楼层 -->
+
+<body>
+    <div class="main">
+		<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
+			<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
+			<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
+				杰安全云
+			</div>
+			<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
+				<div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
+					首页
+				</div>
+				<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
+					实时记录
+				</div>
+				<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
+					报警记录
+				</div>
+			</div>
+		
+			<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
+				<img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
+				<span id="">
+					当前登陆用户:河北诺言科技有限公司
+				</span>
+		
+		
+			</div>
+		</div>
+        <!-- <div class="top clearfix">
+            <div class="logo fl">
+                <img src="./img/logo@1x.png" alt="">
+                <span class="Logotext">是杰安全云</span>
+            </div>
+            <div class="nav fl">
+                <ul>
+                    <li onclick="tomap()">首页</li>
+                    <li onclick="todata()">实时数据</li>
+                    <li style="color: #0cdee5;background-color: #053f4b;">报警记录</li>
+                </ul>
+            </div>
+            <div class="uer fr">
+                <span>当前登录用户：</span>
+                <span>浙江杭州网络科技有限公司</span>
+                <img src="./img/shezhi@1x.png" alt="">
+            </div>
+        </div> -->
+        <div class="line"></div>
+        <div class="search">
+            <div class="companyname fl">浙江杭州网络科技有限公司</div>
+
+            <div class="type fl">
+                <span>设备类型</span>
+                <select name="" id="">
+                    <option value="">探测器</option>
+                </select>
+            </div>
+            <div class="equipment fl">
+                <span>选择设备</span>
+                <select name="" id="">
+                    <option value="">探测器</option>
+                </select>
+            </div>
+            <div class="date fl">
+                <span class="fl">报警时间</span>
+                <input type="text" class="fl" style="margin-left: 5px;color: #FFFFFF;" id="startTime">
+                <span class="connectline fl"></span>
+                <input type="text" class="fl" id="endTime" style="color: #FFFFFF;">
+            </div>
+            <div class="chaxun fl" style="margin-left: 100px;">
+                <button style="color:white; font-size: 14px;">查询</button>
+            </div>
+            <div class="export fl">
+                <button style="color:white; font-size: 14px;">EXCEL导出</button>
+            </div>
+        </div>
+        <div class="data fl " style="width:100%">
+            <table class="table1" style="width:100%">
+                <thead>
+                    <th style="width:50px">
+                        <input id="check_all" type="checkbox" style="background-color: transparent;">
+                    </th>
+                    <th>报警时间</th>
+                    <th>报警类型</th>
+                    <th>一级区域</th>
+                    <th>二级区域</th>
+                    <th>客户名称</th>
+                    <th>项目名称</th>
+                    <th>设置IMEI</th>
+                    <th>探测目标</th>
+                    <th>量程</th>
+                    <th>单位</th>
+                    <th>状态</th>
+                    <th>检测值</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check_item" type="checkbox" style="background-color: transparent;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="paging">
+                <div class="fr">
+                    <span style="font-size: 12px;">1</span><span>-</span><span style="font-size: 12px;">8</span>
+                    <span style="font-size: 12px;">共8条</span>
+                    <input id="pagenumber" type="text">
+                    <select name="" id=""
+                        style="width: 60px;height:15px;line-height: 11px;font-size: 12px;background-color: #02020d;">
+                        <option value="">10/页</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+		function jilu() {
+			console.log("jilu")
+			document.getElementById("ssjl").style.backgroundColor = "#1d4555"
+			document.getElementById("sy").style.backgroundColor = ""
+			document.getElementById("bjjl").style.backgroundColor = ""
+			window.location.href="data-floor.html"
+			
+		}
+		
+		function heade() {
+			console.log("head")
+			document.getElementById("bjjl").style.backgroundColor = ""
+			document.getElementById("ssjl").style.backgroundColor = ""
+			document.getElementById("sy").style.backgroundColor = "#1d4555"
+			window.location.href="map.html"
+		}
+		
+		function alarm() {
+			console.log("alarm")
+			document.getElementById("sy").style.backgroundColor = ""
+			document.getElementById("ssjl").style.backgroundColor = ""
+			document.getElementById("bjjl").style.backgroundColor = "#1d4555"
+			window.location.href="call.html"
+		}
+        $("#check_all").click(function () {//鼠标点击事件
+            $(".check_item").prop("checked", $(this).prop("checked"))//所有类为check_item的属性打√
+            //选中的时候返回true，否则为false
+            //使得id为check_all的原生属性值与class为check_item的保持一致
+        });
+        $(document).on("click", ".check_item", function () {//对class绑定一个点击事件
+            var flag = $(".check_item:checked").length == $(".check_item").length;
+            //如果选中的框数等于总框数的，那么flag的结果返回true
+            $("#check_all").prop("checked", flag)
+            //这时候让id为check_all，也就是全选按钮也为true，那么全选按钮也就打√了
+        })
+
+        $('#startTime').fdatepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            pickTime: true
+        });
+        $('#endTime').fdatepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            pickTime: true
+        });
+
+    </script>
+
+</body>
+
+</html>

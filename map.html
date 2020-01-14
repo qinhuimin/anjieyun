@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>周边（圆形区域）检索</title>
+		<script src="js/city.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/province.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="js/ec.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#container {
+				min-width: 1920px;
+				min-height: 960px;
+
+				overflow: hidden;
+			}
+
+			.angle {
+				display: inline-block;
+				width: 0px;
+				height: 0px;
+				position: absolute;
+				bottom: -60px;
+				border: 14px solid;
+				left: 15px;
+				bottom: -25px;
+				opacity: 0.8;
+				border-color: #333333 transparent transparent transparent;
+			}
+
+			.yuan {
+				background-color: red;
+				width: 8px;
+				height: 8px;
+				border-radius: 8px;
+				float: left;
+				margin-top: 11px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+
+			.yuan1 {
+				background-color: #2cc290;
+				width: 8px;
+				height: 8px;
+				border-radius: 8px;
+				float: left;
+				margin-top: 11px;
+				margin-left: 20px;
+				margin-right: 20px;
+
+			}
+		</style>
+		<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=DK7RA71wlT1niGTIZgtUFrzCAUG2Gjud"></script>
+
+	</head>
+	<body>
+
+		<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
+			<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
+			<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
+				杰安全云
+			</div>
+			<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
+				<div onclick="heade()" id="sy" style="width: 33.33%;float: left;background-color: #1d4555;">
+					首页
+				</div>
+				<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
+					实时记录
+				</div>
+				<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;">
+					报警记录
+				</div>
+			</div>
+
+			<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
+				<img onclick="logout()" src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
+				<span id="">
+					当前登陆用户:河北诺言科技有限公司
+				</span>
+
+
+			</div>
+		</div>
+		<div id="">
+			<div id="" style="border: 2px solid #204eb2;color: #FFFFFF;position: fixed;right: 50px; top: 80px;z-index: 999999999;background-color: #0b0f17;width: 500px;height: 200px;opacity: 0.7;">
+				<div id="" style="float: left;width: 20px;height: 200px;background-color: #2857b3;line-height: 200px;">
+					<img src="img/point.png" style="width: 16px;height: 25px;">
+				</div>
+				<div id="" style="text-align: center;color: #0fd4db;font-size: 20px;height: 50px;line-height: 50px;font-weight: 700;border-bottom: 1px solid #343a62;">
+					实时报警窗口
+				</div>
+
+
+				<table id="table" style="text-align: center;width: 480px;height: 150px;">
+
+					<!-- <tr>
+						<td>2019-12-12 12:12:12</td>
+						<td>河北邯郸市</td>
+						<td>ASD00001</td>
+						<td style="color: red;">异常</td>
+					</tr>
+					<tr>
+						<td>2019-12-12 12:12:12</td>
+						<td>河北邯郸市</td>
+						<td>ASD00001</td>
+						<td style="color: aqua;">正常</td>
+					</tr>
+					<tr>
+						<td>2019-12-12 12:12:12</td>
+						<td>河北邯郸市</td>
+						<td>ASD00001</td>
+						<td style="color: red;">异常</td>
+					</tr>
+					<tr>
+						<td>2019-12-12 12:12:12</td>
+						<td>河北邯郸市</td>
+						<td>ASD00001</td>
+						<td style="color: red;">异常</td>
+					</tr> -->
+				</table>
+
+
+			</div>
+			<div id="" style="border: 2px solid #204eb2;color: #FFFFFF;position: fixed;right: 50px; top: 300px;z-index: 99999;background-color: #0b0f17;width: 500px;height: 230px;opacity: 0.7;">
+				<div id="" style="float: left;width: 20px;height: 230px;background-color: #2857b3;line-height: 200px;">
+					<img src="img/point.png" style="width: 16px;height: 25px;">
+				</div>
+				<div id="" style="text-align: center;color: #0fd4db;font-size: 20px;height: 50px;line-height: 50px;font-weight: 700;border-bottom: 1px solid #343a62;">
+					设备情况
+				</div>
+
+
+				<div id="" style="width: 400px;height:100px;border-bottom: 1px solid #343a62;border-left: 1px solid #343a62;margin: 0 auto;margin-top: 30px;">
+					<div id="">
+						<div id="" style="background-color: #29d197;width: 20px;height: 50px;float: left;margin-left: 50px;">
+
+						</div>
+						<div id="" style="background-color: #1690f1;width: 20px;height: 100px;margin-left: 50px;float: left;">
+
+						</div>
+						<div id="" style="background-color: #f08400;width: 20px;height: 100px;margin-left: 50px;float: left;">
+
+						</div>
+						<div id="" style="background-color: #e31c14;width: 20px;height: 100px;margin-left: 50px;float: left;">
+
+						</div>
+						<div id="" style="background-color: #973dbd;width: 20px;height: 100px;margin-left: 50px;float: left;">
+
+						</div>
+					</div>
+
+					<div id="" style="height: 50px;width: 90%;float: left;margin-top: 15px;">
+						<label style="margin-left: 45px;">正常</label>
+						<label style="margin-left: 32px;">维护</label>
+						<label style="margin-left: 32px;">报警</label>
+						<label style="margin-left: 35px;">故障</label>
+						<label style="margin-left: 35px;">故障</label>
+					</div>
+				</div>
+
+
+			</div>
+			<div id="" style="border: 2px solid #204eb2;color: #FFFFFF;position: fixed;right: 50px; top: 550px;z-index: 99999;background-color: #0b0f17;width: 500px;height: 200px;opacity: 0.7;">
+				<div id="" style="float: left;width: 20px;height: 200px;background-color: #2857b3;line-height: 200px;">
+					<img src="img/point.png" style="width: 16px;height: 25px;">
+				</div>
+				<div id="" style="text-align: center;color: #0fd4db;font-size: 20px;height: 50px;line-height: 50px;font-weight: 700;border-bottom: 1px solid #343a62;">
+					客户设备情况
+				</div>
+				<div id="" style="margin: 0 auto;float: right;">
+					<div id="main2" style="width: 240px;height:150px;float: left;"></div>
+					<div id="main3" style="width: 240px;height:150px;float: right;"></div>
+				</div>
+			</div>
+		</div>
+		<div id="" style="position: absolute;top: 100px;left: 50px;z-index: 9999;color: #FFFFFF;text-align: center;">
+			<div id="" style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;">
+				<div onclick="selprovince()" id="" style="width: 90%;margin: 0 auto;">
+					<div id="sfmr" style="float: left;margin-left: 5px;">
+						选择省份
+					</div>
+
+					<img src="img/point.png" style="width: 16px;height: 25px;float: right;">
+				</div>
+
+			</div>
+			<div id="province" style="display: none;">
+				<!-- <div id="" style="background-color: #303232;width: 100px;height: 30px;line-height: 30px;">
+					河北
+				</div> -->
+
+			</div>
+
+			<div id="" style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;margin-top: 10px;">
+				<div onclick="selcity()" id="" style="width: 90%;margin: 0 auto;">
+					<div id="mrcity" style="float: left;margin-left: 5px;">
+						选择城市
+					</div>
+
+					<img src="img/point.png" style="width: 16px;height: 25px;float: right;">
+				</div>
+			</div>
+			<div id="city" style="display: none;">
+
+
+			</div>
+			<div id="" style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;margin-top: 10px;">
+				<div id="" onclick="selgongsi()" style="width: 90%;margin: 0 auto;">
+					<div id="gsname" style="float: left;margin-left: 5px;">
+						选择公司
+					</div>
+
+					<img src="img/point.png" style="width: 16px;height: 25px;float: right;">
+				</div>
+			</div>
+			<div id="gongsi" style="display: none;">
+
+
+			</div>
+
+		</div>
+
+		<div id="container"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var user = JSON.parse(localStorage.getItem("user"));
+	var provinceid = ""; //当前省的id
+	var cityid = ""; //当前市的id
+	var currentcitys = [];
+	var companys = [];
+	console.log(user)
+	$(function() {
+		// ssbj()
+		ssbjall()
+		sbqk()
+		// getkehubyuid();
+	})
+	// 百度地图API功能
+	var map = new BMap.Map("container"); // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes: [
+			BMAP_NORMAL_MAP,
+			BMAP_HYBRID_MAP
+		]
+	}));
+	var point = new BMap.Point(116.404, 39.915);
+	map.centerAndZoom(point, 15);
+	// 编写自定义函数,创建标注
+
+	// 随机向地图添加2个标注
+	var bounds = map.getBounds();
+	var sw = bounds.getSouthWest();
+	var ne = bounds.getNorthEast();
+	var lngSpan = Math.abs(sw.lng - ne.lng);
+	var latSpan = Math.abs(ne.lat - sw.lat);
+	// for (var i = 0; i < 2; i++) {
+	// 	var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+	// 	addMarker(point);
+	// }
+	map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);
+
+	function addMarker(point, name,url) {
+		var myIcon = new BMap.Icon("http://49.235.203.189:8087/jeecg-boot/sys/common/view/"+url, new BMap.Size(64, 64));
+		var marker = new BMap.Marker(point, {
+			icon: myIcon
+		});
+
+		marker.setLabel(setLabelStyle(name));
+		map.addOverlay(marker);
+	}
+
+	function setLabelStyle(content) {
+		//左偏移  右偏移
+		var offsetSize = new BMap.Size(0, 0);
+		var labelStyle = {
+			color: "#fff",
+			backgroundColor: "#333333",
+			border: "0",
+			fontSize: "14px",
+			width: "200px",
+			opacity: "0.8",
+			verticalAlign: "center",
+			borderRadius: "2px",
+			whiteSpace: "normal",
+			wordWrap: "break-word",
+			padding: "7px",
+		};
+		//用于设置样式
+		var spanA = "<span class='angle'><span>"
+		//不同数字长度需要设置不同的样式。
+		var num = parseInt(content.length / 10)
+		switch (num) {
+			case 0:
+				offsetSize = new BMap.Size(-20, -40);
+				break;
+			case 1:
+				offsetSize = new BMap.Size(-20, -40);
+				break;
+			case 2:
+				offsetSize = new BMap.Size(-20, -60);
+				break;
+			case 3:
+				offsetSize = new BMap.Size(-20, -80);
+				break;
+			default:
+				break;
+		}
+		var con = '<div style="height:30px;line-height:30px"><div id="" class="yuan">' +
+			'</div>' + content + '</div>' +
+			'<div style="height:30px;line-height:30px"><div id="" class="yuan1"></div>设备数量50</div>';
+		var label = new BMap.Label(con + spanA, {
+			offset: offsetSize
+		});
+		label.setStyle(labelStyle);
+		return label;
+	}
+	//设备情况
+	function sbqk(){
+		var req = {
+		
+			uid: user.userId
+		
+		}
+		
+		$.ajax({
+		
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/device/queryDeviceCountByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+		
+			},
+			success: function(data) {
+				console.log(data)
+			
+				if (data.success) {
+						
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+	//退出
+	 function logout(){
+	   var req = {
+	   
+	   	uid: user.userId
+	   
+	   }
+	   
+	   $.ajax({
+	   
+	   	url: "http://49.235.203.189:8087/jeecg-boot/sys/logout",
+	   	type: "get",
+	   	// contentType: "application/json",
+	   	dataType: "json",
+	   	data: req,
+	   	beforeSend: function(request) {
+	   		request.setRequestHeader("X-Access-Token",
+	   			user.token
+	   		);
+	   
+	   	},
+	   	success: function(data) {
+	   		console.log(data)
+	   	
+	   		if (data.success) {
+				localStorage.removeItem("user")
+	   			window.location.href="index.html"
+	   		}
+	   	},
+	   	error: function() {
+	   		console.log("请求失败");
+	   	}
+	   });
+   }
+	function ssbjall() {
+		var req = {
+
+			uid: user.userId
+
+		}
+
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarmRecordByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data)
+				var table_datas = "";
+				if (data.success) {
+					$.each(data.result, function(i, item) {
+						table_datas += '<tr>' +
+							'<td>'+item.alarmTime+'</td>' +
+							'<td>'+item.installationPosition+'</td>' +
+							'<td>'+item.deviceNum+'</td>' +
+							'<td style="color: aqua;">正常</td>' +
+							'</tr>'
+					})
+					$("#table").append(table_datas);
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+	//实时报警  查询单个客户
+	function ssbj() {
+		var req = {
+
+			id: 1001
+
+		}
+
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarmRecordById",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data)
+				if (data.success) {
+
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+
+	function getkehubyuid(pid, cid, customerId) {
+		var req = {
+			uid: user.userId,
+			pid: pid,
+			cid: cid,
+			customerId: customerId
+		}
+		map.clearOverlays();
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/customers/queryTowVoAllById",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data.result)
+				if (data.success) {
+					$.each(data.result, function(i, item) {
+
+						var point = new BMap.Point(item.longitude, item.latitude);
+						addMarker(point, item.name,item.custLogo)
+					})
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+	}
+
+	function te(str, title) {
+		var req = {
+			uid: user.userId,
+			provinceid: str,
+			cityid: ''
+		}
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/area/querCustomerByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data.result)
+				if (data.success) {
+					currentcitys = data.result;
+					provinceid = str;
+					getkehubyuid(str, "", "")
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+		// console.log(str)
+		// initcity(str)
+
+		$("#sfmr").text(title)
+	}
+
+	function tee(str, title) {
+		var req = {
+			uid: user.userId,
+			provinceid: provinceid,
+			cityid: str
+		}
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/area/querCustomerByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data.result)
+				if (data.success) {
+					companys = data.result
+					cityid = str
+					getkehubyuid(provinceid, str, "")
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+
+
+
+		$("#mrcity").text(title)
+	}
+
+	function teee(id, companyname) {
+		$("#gsname").text(companyname)
+		getkehubyuid(provinceid, cityid, id)
+	}
+
+	function initcity(str) {
+
+		$("#city").empty();
+		var citys = '';
+		$.each(currentcitys, function(i, item) {
+			citys += '<div onclick=tee("' + item.id + '","' + item.areaName +
+				'")  style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;">' + item.areaName +
+				'</div>';
+		})
+		//将数据添加到省份这个下拉框里面
+		$("#city").append(citys);
+	}
+
+	function companylist() {
+		$("#gongsi").empty();
+		var gs = '';
+		$.each(companys, function(i, item) {
+			gs += '<div onclick=teee("' + item.id + '","' + item.name +
+				'")  style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;">' + item.name +
+				'</div>';
+		})
+		//将数据添加到省份这个下拉框里面
+		$("#gongsi").append(gs);
+	}
+
+	function init() {
+		var req = {
+			uid: user.userId,
+			provinceid: '',
+			cityid: ''
+		}
+		$.ajax({
+
+			url: "http://49.235.203.189:8087/jeecg-boot/monitor/area/querCustomerByUid",
+			type: "get",
+			// contentType: "application/json",
+			dataType: "json",
+			data: req,
+			beforeSend: function(request) {
+				request.setRequestHeader("X-Access-Token",
+					user.token
+				);
+
+			},
+			success: function(data) {
+				console.log(data.result)
+				if (data.success) {
+					$("#province").empty();
+					var str = '';
+					$.each(data.result, function(i, item) {
+						str += '<div onclick=te("' + item.id + '","' + item.areaName +
+							'") style="background-color: #303232;width: 230px;height: 30px;line-height: 30px;">' + item.areaName +
+							'</div>';
+					})
+					//将数据添加到省份这个下拉框里面
+					$("#province").append(str);
+				}
+			},
+			error: function() {
+				console.log("请求失败");
+			}
+		});
+
+
+	}
+
+	function selprovince() {
+		if (document.getElementById("province").style.display == "none") {
+			$("#province").empty();
+			document.getElementById("province").style.display = "block"
+			init()
+		} else {
+			document.getElementById("province").style.display = "none"
+		}
+
+	}
+
+	function selcity() {
+		if (document.getElementById("city").style.display == "none") {
+
+			document.getElementById("city").style.display = "block"
+
+			initcity()
+		} else {
+			document.getElementById("city").style.display = "none"
+		}
+	}
+
+	function selgongsi() {
+		if (document.getElementById("gongsi").style.display == "none") {
+
+			document.getElementById("gongsi").style.display = "block"
+
+			companylist()
+		} else {
+			document.getElementById("gongsi").style.display = "none"
+		}
+	}
+
+	function jilu() {
+		console.log("jilu")
+		document.getElementById("ssjl").style.backgroundColor = "#1d4555"
+		document.getElementById("sy").style.backgroundColor = ""
+		document.getElementById("bjjl").style.backgroundColor = ""
+		window.location.href = "data-floor.html"
+
+	}
+
+	function heade() {
+		console.log("head")
+		document.getElementById("bjjl").style.backgroundColor = ""
+		document.getElementById("ssjl").style.backgroundColor = ""
+		document.getElementById("sy").style.backgroundColor = "#1d4555"
+	}
+
+	function alarm() {
+		console.log("alarm")
+		document.getElementById("sy").style.backgroundColor = ""
+		document.getElementById("ssjl").style.backgroundColor = ""
+		document.getElementById("bjjl").style.backgroundColor = "#1d4555"
+		window.location.href = "call.html"
+	}
+	// var myChart = echarts.init(document.getElementById('main'));
+	var myChart2 = echarts.init(document.getElementById('main2'));
+	var myChart3 = echarts.init(document.getElementById('main3'));
+	// option = {
+	// 	xAxis: {
+	// 		type: 'category',
+	// 		data: ['正常', '维护', '报警', '故障', '通讯故障']
+	// 	},
+	// 	yAxis: {
+	// 		type: 'value'
+	// 	},
+	// 	series: [{
+	// 		data: [120, 200, 150, 80, 70, 110, 130],
+	// 		type: 'bar'
+	// 	}]
+	// };
+	option2 = {
+		tooltip: {
+			trigger: 'item',
+			formatter: '{a} <br/>{b}: {c} ({d}%)'
+		},
+
+		series: [{
+			name: '访问来源',
+			type: 'pie',
+			radius: ['50%', '70%'],
+			avoidLabelOverlap: false,
+			label: {
+				normal: {
+					show: false,
+					position: 'center'
+				},
+				emphasis: {
+					show: true,
+					textStyle: {
+						fontSize: '30',
+						fontWeight: 'bold'
+					}
+				}
+			},
+			labelLine: {
+				normal: {
+					show: true
+				}
+			},
+			data: [{
+					value: 335,
+					name: '直接访问'
+				},
+				{
+					value: 310,
+					name: '邮件营销'
+				},
+				{
+					value: 234,
+					name: '联盟广告'
+				}
+
+			]
+		}]
+	};
+	// 使用刚指定的配置项和数据显示图表。
+	// myChart.setOption(option);
+	myChart2.setOption(option2);
+	myChart3.setOption(option2);
+</script>

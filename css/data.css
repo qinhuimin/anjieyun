@@ -1,0 +1,168 @@
+body {
+    background-image: url(../img/beijing@1x.png);
+    background-position:center 0;
+    background-repeat: no-repeat;
+
+}
+.main{
+    /* width: 1280px; */
+    /* margin: 0 auto; */
+}
+.top{
+    height: 80px;
+    line-height: 80px;
+    padding: 0 25px;
+}
+.line{
+    border-bottom: 1px solid #4d5a64;
+}
+
+img{
+    vertical-align:middle;
+}
+.logo{
+    height: 80px;
+}
+.Logotext{
+    color: #FFF;
+    /* font-size: 28px; */
+    vertical-align:middle;
+    margin-left: 30px;
+}
+.nav{
+    margin-left: 200px;
+}
+.nav li{
+    float: left;
+    width: 211px;
+    text-align: center;
+    font-size: 22px;
+    color: #858c91;
+    /* color: #0cdee5; */
+    /* background-color: #053f4b; */
+}
+.nav li:hover{
+    color: #0cdee5;
+    background-color: #053f4b;
+}
+.uer{
+    color: #b0b1bb;
+    vertical-align:middle;
+}
+.search{
+    padding: 0 25px;
+    padding-top: 30px;
+    height: 82px;
+    color: #8f9094;
+    font-size: 16px;
+}
+.companyname{
+    height: 32px;
+    line-height: 32px;
+    color: #fdfdfd;
+    background-color: #03333b;
+}
+.floor,.type,.equipment,.number,.date{
+    margin-left: 10px;
+}
+select{
+    width: 84px;
+    height: 30px;
+    color: #fff;
+    background-color: transparent;
+    border-color: #555b7f;
+    /*取消默认箭头开始*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: url(../img/down.png) no-repeat right 0.5rem center;
+}
+.number input{
+    display: inline-block;
+    width: 84px;
+    height: 30px;
+    border: 1px solid #555b7f;
+    color: #fff;
+}
+
+.date input{
+    display: inline-block;
+    width: 140px;
+    height: 30px;
+    /* background-color: yellowgreen; */
+    border:1px solid  #555b7f;
+}
+.connectline{
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    margin-top: 14px;
+    background-color: #555b7f;
+}
+.chaxun button,.export button{
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+}
+.chaxun button{
+    background-color: #3b78ff;
+}
+.export button{
+    background-color: #00c884;
+}
+.data{
+    padding:0 25px;
+    width: 60%;
+}
+.table1{
+    width: 100%;
+}
+.table1 input{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.table1 th{
+    color: #fff;
+    border: 1px solid #1c4bb7 ;
+    width: 100px;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+}
+
+.table1 tr,.table1 tr td{
+    color: #fff;
+    border: 1px solid #1c4bb7 ;
+    width: 100px;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+}
+.rightline{
+    width: 38%;
+    height:615px;
+    margin-left: 20px;
+    border:1px solid #1c4bb7;
+}
+.linechart{
+    width: 100%;
+    border-bottom: 1px solid #555b7f;
+}
+
+.paging{
+    /* padding :0 25px; */
+    color: #fff;
+    margin-top: 20px;
+}
+.callNumberTitle{
+    margin-top: 20px;
+    color: #0bcad1;
+    font-size: 20px;
+    text-align: center;
+}
+.callNumberdate{
+    font-size: 14px;
+    color: #cbccd6;
+    text-align: center;
+}
