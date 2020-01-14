@@ -39,32 +39,33 @@
 
 <body>
     <div class="main">
-		<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
-			<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
-			<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
-				杰安全云
-			</div>
-			<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
-				<div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
-					首页
-				</div>
-				<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
-					实时记录
-				</div>
-				<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
-					报警记录
-				</div>
-			</div>
-		
-			<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
-				<img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
-				<span id="">
-					当前登陆用户:河北诺言科技有限公司
-				</span>
-		
-		
-			</div>
-		</div>
+        <div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
+            <img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
+            <div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
+                杰安全云
+            </div>
+            <div id="all"
+                style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
+                <div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
+                    首页
+                </div>
+                <div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
+                    实时记录
+                </div>
+                <div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
+                    报警记录1
+                </div>
+            </div>
+
+            <div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
+                <img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
+                <span id="">
+                    当前登陆用户:河北诺言科技有限公司
+                </span>
+
+
+            </div>
+        </div>
         <!-- <div class="top clearfix">
             <div class="logo fl">
                 <img src="./img/logo@1x.png" alt="">
@@ -318,30 +319,30 @@
         </div>
     </div>
     <script>
-		function jilu() {
-			console.log("jilu")
-			document.getElementById("ssjl").style.backgroundColor = "#1d4555"
-			document.getElementById("sy").style.backgroundColor = ""
-			document.getElementById("bjjl").style.backgroundColor = ""
-			window.location.href="data-floor.html"
-			
-		}
-		
-		function heade() {
-			console.log("head")
-			document.getElementById("bjjl").style.backgroundColor = ""
-			document.getElementById("ssjl").style.backgroundColor = ""
-			document.getElementById("sy").style.backgroundColor = "#1d4555"
-			window.location.href="map.html"
-		}
-		
-		function alarm() {
-			console.log("alarm")
-			document.getElementById("sy").style.backgroundColor = ""
-			document.getElementById("ssjl").style.backgroundColor = ""
-			document.getElementById("bjjl").style.backgroundColor = "#1d4555"
-			window.location.href="call.html"
-		}
+        function jilu() {
+            console.log("jilu")
+            document.getElementById("ssjl").style.backgroundColor = "#1d4555"
+            document.getElementById("sy").style.backgroundColor = ""
+            document.getElementById("bjjl").style.backgroundColor = ""
+            window.location.href = "data-floor.html"
+
+        }
+
+        function heade() {
+            console.log("head")
+            document.getElementById("bjjl").style.backgroundColor = ""
+            document.getElementById("ssjl").style.backgroundColor = ""
+            document.getElementById("sy").style.backgroundColor = "#1d4555"
+            window.location.href = "map.html"
+        }
+
+        function alarm() {
+            console.log("alarm")
+            document.getElementById("sy").style.backgroundColor = ""
+            document.getElementById("ssjl").style.backgroundColor = ""
+            document.getElementById("bjjl").style.backgroundColor = "#1d4555"
+            window.location.href = "call.html"
+        }
         $("#check_all").click(function () {//鼠标点击事件
             $(".check_item").prop("checked", $(this).prop("checked"))//所有类为check_item的属性打√
             //选中的时候返回true，否则为false
