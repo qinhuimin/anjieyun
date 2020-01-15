@@ -137,7 +137,26 @@
 
                 </tbody>
             </table>
-            <div class="paging">
+			<div id="" style="color: #FFFFFF;float: right;margin-top: 10px;">
+				<div id="" style="float: left;">
+					<span id="" onclick="pageup()">
+						上一页
+					</span>
+					<span id="currentpage">
+						1
+					</span>
+					<span id="">/</span>
+					<span id="pageall">
+						100
+					</span>
+					<span id="" onclick="pagedown()">
+						下一页
+					</span>
+				</div>
+				<input type="" name="" id="topage" value="" style="color: #FFFFFF;border: 1px solid #FFFFFF;width: 50px;float: left;" />
+				<button type="button" style="color: #FFFFFF;float: left;" onclick="sure()">跳转</button>
+			</div>
+            <!-- <div class="paging">
                 <div class="fr">
                     <span style="font-size: 12px;">1</span><span>-</span><span style="font-size: 12px;">8</span>
                     <span style="font-size: 12px;">共8条</span>
@@ -147,7 +166,7 @@
                         <option value="">10/页</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <script>
@@ -281,22 +300,22 @@
             // 获取每页数pageSize
             console.log(window.localStorage)
             var req = {
-                alarmTime_begin: alarmTime_begin1,
-                alarmTime_end: alarmTime_end1,
-                oneAreaId: '',
-                twoAreaId: '',
-                customerId: 1008,
-                alarmDeviceType: '',
-                floorName: selectFloorValue,
-                pageNo: 5,
-                pageSize: 8,
+                // alarmTime_begin: alarmTime_begin1,
+                // alarmTime_end: alarmTime_end1,
+                // oneAreaId: '',
+                // twoAreaId: '',
+                // customerId: 1008,
+                // alarmDeviceType: '',
+                // floorName: selectFloorValue,
+                pageNo: 1,
+                pageSize: 5,
             }
             $.ajax({
                 url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarm",
                 type: "GET",
                 dataType: "json", //返回格式为json
-                contentType: "application/json",
-                // data: JSON.stringify(req),
+                // contentType: "application/json",
+                 data: req,
                 beforeSend: function (request) {
                     request.setRequestHeader("X-Access-Token",
                         user.token

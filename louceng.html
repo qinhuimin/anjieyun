@@ -15,6 +15,11 @@
 				margin: 0;
 				padding: 0;
 			}
+			.sbinlouceng{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+			}
 
 			/* #container {
 				min-width: 1920px;
@@ -90,7 +95,7 @@
 
 			</div>
 		</div>
-		<div id="" style="background-image: url(img/beijing@1x.png);width: 100%;height: 969px;overflow: hidden;">
+		<div id="" style="background-image: url(img/beijing@1x.png);width: 100%;height: 969px;overflow: hidden;position: relative;">
 			<div id="left_content" style="float: left;width: 15%;height: 929px;display: block;">
 				<table border="1px" cellspacing="0" cellpadding="10" style="border-color: #2b4d9b;border-width: 1px;width: 90%;height: 200px;margin: 0 auto;margin-top: 20px;color: #FFFFFF;text-align: center;">
 					
@@ -176,19 +181,26 @@
 					<div id="" style="">
 						<div id="" style="width: 90%;margin: 0 auto;margin-top: 20px;text-align: center;font-weight: 700;">
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_all">
+									0
+								</span>
+								
 								<div id="">
-									维护设备
+									设备总数
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_normal">
+									0
+								</span>
 								<div id="">
-									维护设备
+									正常设备
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_whsb">
+									0
+								</span>
 								<div id="">
 									维护设备
 								</div>
@@ -197,28 +209,38 @@
 						<div id="" style="clear: both;"></div>
 						<div id="" style="width: 90%;margin: 0 auto;margin-top: 50px;text-align: center;font-weight: 700;">
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_gzsb">
+									0
+								</span>
 								<div id="">
-									维护设备
+									设备故障
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_txgz">
+									0
+								</span>
 								<div id="">
-									维护设备
+									通讯故障
 								</div>
 							</div>
 							<div id="" style="float: left;width: 30%;border: 1px solid #2b4d9b;height: 50px;margin-left: 2%;color: #2CC290;line-height: 50px;">
-								50
+								<span id="self_bjsb">
+									0
+								</span>
 								<div id="">
-									维护设备
+									报警设备
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="right_content" style="position: relative;float: right;width: 85%;background-size: 1920px 969px;height: 969px;background-repeat:no-repeat ;background-image: url(img/denglubeijing@1x.png);border-top: 2px solid #4e5f6b;opacity: 0.5;">
+			
+			<div id="planPic" style="position: relative;float: right;width: 85%;background-size: 1920px 969px;height: 969px;background-repeat:no-repeat;border-top: 2px solid #4e5f6b;opacity: 0.2;">
+				<div id="louceng_dev" style="position: absolute;top: 50px;left: 30px;">
+					<!-- <img src="img/Kshebeiguzhang@1X.png" > -->
+				</div>
 				<div id="" onclick="allscreen()" style="position: absolute;right: 30px;top: 20px;">
 					<div id="" style="padding: 5px;width:50px;height: 50px;background-color: #2CC290;opacity: 0.5;text-align: center;">
 						<img src="img/quanpin@1x.png" style="height: 20px;width: 20px;">

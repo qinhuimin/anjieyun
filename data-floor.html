@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/data.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="./js/jquery-3.4.1.min.js"></script>
-	<script src="./js/sshj.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="./css/foundation-datepicker.css">
-   <!-- <script src="./js/jquery-3.4.1.min.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<link rel="stylesheet" href="./css/data.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<script src="./js/jquery-3.4.1.min.js"></script>
+		<script src="./js/sshj.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="./css/foundation-datepicker.css">
+		<!-- <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/date/jquery-1.11.3.min.js"></script> -->
-    <script src="./js/date/foundation-datepicker.js"></script>
-    <script src="./js/date/foundation-datepicker.zh-CN.js"></script>
-	
+		<script src="./js/date/foundation-datepicker.js"></script>
+		<script src="./js/date/foundation-datepicker.zh-CN.js"></script>
 
 
-    <style>
-        #pagenumber {
+
+		<style>
+			#pagenumber {
             display: inline-block;
             width: 30px;
             height: 15px;
@@ -32,37 +32,37 @@
             color: #fff;
         }
     </style>
-</head>
+	</head>
 
-<body>
-    <div class="main">
-		<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
-			<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
-			<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
-				杰安全云
-			</div>
-			<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
-				<div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
-					首页
+	<body>
+		<div class="main">
+			<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
+				<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
+				<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
+					杰安全云
 				</div>
-				<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;background-color: #1d4555;">
-					实时记录
+				<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
+					<div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
+						首页
+					</div>
+					<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;background-color: #1d4555;">
+						实时记录
+					</div>
+					<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;">
+						报警记录
+					</div>
 				</div>
-				<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;">
-					报警记录
+
+				<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
+					<img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
+					<span id="">
+						当前登陆用户:河北诺言科技有限公司
+					</span>
+
+
 				</div>
 			</div>
-		
-			<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
-				<img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
-				<span id="">
-					当前登陆用户:河北诺言科技有限公司
-				</span>
-		
-		
-			</div>
-		</div>
-       <!-- <div class="top clearfix">
+			<!-- <div class="top clearfix">
             <div class="logo fl">
                 <img src="./img/logo@1x.png" alt="">
                 <span class="Logotext">是杰安全云</span>
@@ -80,69 +80,87 @@
                 <img src="./img/shezhi@1x.png" alt="">
             </div>
         </div> -->
-        <div class="line"></div>
-        <div class="search">
-            <div id="khname_a"  class="companyname fl"></div>
-            <div class="floor fl">
-                <span>选择楼层</span>
-                <select style="color: #b6bec3;" name="" id="">
-                    <option value="">探测器</option>
-                    <option value="">探测器</option>
-                </select>
-            </div>
-            <div class="type fl">
-                <span>设备类型</span>
-                <select style="color: #b6bec3;" name="" id="">
-                    <option value="">探测器</option>
-                </select>
-            </div>
-            <div class="equipment fl">
-                <span>选择设备</span>
-                <select style="color: #b6bec3;" name="" id="">
-                    <option value="">探测器</option>
-                </select>
-            </div>
-            <div class="number fl">
-                <span>设备编号</span>
-                <input type="text">
-            </div>
-            <div class="date fl">
-                <span class="fl">采集时间&nbsp;</span>
-                <input style="color: #fff;width: 130px;font-size: 14px;" type="text" class="fl" id="startTime">
-                <span class="connectline fl"></span>
-                <input style="color: #fff;width: 130px; font-size: 14px;" type="text" class="fl" id="endTime">
-            </div>
-            <div class="chaxun fl">
-                <button>查询</button>
-            </div>
-            <div class="export fl">
-                <button>导出</button>
-            </div>
-        </div>
-        <div class="data fl ">
-            <table class="table1">
-                <thead>
-                    <th style="width:50px">
-                        <input id="check_all" type="checkbox" style="background-color: transparent;">
-                    </th>
-                    <th>楼层名称</th>
-                    <th>设备IMEI</th>
-                    <th>设备类型</th>
-                    <th>设备编号</th>
-                    <th>探测目标</th>
-                    <th>量程</th>
-                    <th>单位</th>
-                    <th>状态</th>
-                    <th>pv值</th>
-                    <th>采集时间</th>
-                </thead>
-                <tbody id="tbodydata">
-                   
-                    
-                </tbody>
-            </table>
-		
-            <div class="paging">
+			<div class="line"></div>
+			<div class="search">
+				<div id="khname_a" class="companyname fl"></div>
+				<!-- <div class="floor fl">
+					<span>选择楼层</span>
+					<select style="color: #b6bec3;" name="" id="">
+						<option value="">探测器</option>
+						<option value="">探测器</option>
+					</select>
+				</div> -->
+				<div class="type fl">
+					<span>设备类型</span>
+					<select style="color: #b6bec3;" name="" id="deviceType">
+						<option value="1">探测器</option>
+						<option value="2">控制器</option>
+						<option value="3">输出模块</option>
+					</select>
+				</div>
+				<div class="date fl">
+					<span class="fl">设备编号</span>
+					<input style="color: #fff;width: 130px;font-size: 14px;" type="text" class="fl" id="deviceNum">
+				</div>
+				<div class="date fl">
+					<span class="fl">采集时间&nbsp;</span>
+					
+					<input style="color: #fff;width: 130px;font-size: 14px;" type="text" class="fl" id="startTime">
+					<span class="connectline fl"></span>
+					<input style="color: #fff;width: 130px; font-size: 14px;" type="text" class="fl" id="endTime">
+				</div>
+				<!-- <div class="chaxun fl">
+					<button>查询</button>
+				</div> -->
+				<div class="export fl">
+					<button onclick="exporttoexel()">导出</button>
+				</div>
+			</div>
+			<div class="data fl ">
+				<table class="table1">
+					<thead>
+						<th style="width:50px">
+							<input id="check_all" type="checkbox" style="background-color: transparent;">
+						</th>
+						<th>省份</th>
+						<th>城市</th>
+						<th>客户名称</th>
+						<th>楼层名称</th>
+						<th>设备IMEI</th>
+						<th>设备类型</th>
+						<th>设备编号</th>
+						<th>探测目标</th>
+						<th>量程</th>
+						<th>单位</th>
+						<th>状态</th>
+						<th>pv值</th>
+						<th>采集时间</th>
+					</thead>
+					<tbody id="tbodydata">
+
+
+					</tbody>
+				</table>
+				<div id="" style="color: #FFFFFF;float: right;margin-top: 10px;">
+					<div id="" style="float: left;">
+						<span id="" onclick="pageup()">
+							上一页
+						</span>
+						<span id="currentpage">
+							1
+						</span>
+						<span id="">/</span>
+						<span id="pageall">
+							100
+						</span>
+						<span id="" onclick="pagedown()">
+							下一页
+						</span>
+					</div>
+					<input type="" name="" id="topage" value="" style="color: #FFFFFF;border: 1px solid #FFFFFF;width: 50px;float: left;" />
+					<button type="button" style="color: #FFFFFF;float: left;" onclick="sure()">跳转</button>
+				</div>
+				<!-- <div class="paging">
                 <div class="fr">
                     <span style="font-size: 12px;">1</span><span>-</span><span style="font-size: 12px;">8</span>
                     <span style="font-size: 12px;">共8条</span>
@@ -152,411 +170,410 @@
                         <option value="">10/页</option>
                     </select>
                 </div>
-            </div>
-        </div>
-        <div class="fl rightline">
-            <div class="linechart">
-                <div class="callNumberTitle">7天报警次数统计</div>
-                <div class="callNumberdate">(2019年12月)</div>
-                <div id="callNumberLine" style="width: 600px;height:200px;margin-left: 10px;"></div>
-            </div>
-            <div class="topten">
-                <div class="callNumberTitle">7天设备报警TOP10</div>
-                <div class="callNumberdate">(2019年12月)</div>
-                <div id="toptenLine" style="width: 600px;height:200px;margin-left: 10px;"></div>
-            </div>
-        </div>
+            </div> -->
+			</div>
+			<div class="fl rightline">
+				<div class="linechart">
+					<div class="callNumberTitle">7天报警次数统计</div>
+					<div class="callNumberdate">(2019年12月)</div>
+					<div id="callNumberLine" style="width: 600px;height:200px;margin-left: 10px;"></div>
+				</div>
+				<div class="topten">
+					<div class="callNumberTitle">7天设备报警TOP10</div>
+					<div class="callNumberdate">(2019年12月)</div>
+					<div id="toptenLine" style="width: 600px;height:200px;margin-left: 10px;"></div>
+				</div>
+			</div>
 
-    </div>
-    </div>
-    <script>
-		document.getElementById("khname_a").innerText="dfsafdasdf"
-		function jilu() {
-			console.log("jilu")
-			document.getElementById("ssjl").style.backgroundColor = "#1d4555"
-			document.getElementById("sy").style.backgroundColor = ""
-			document.getElementById("bjjl").style.backgroundColor = ""
-			window.location.href="data-floor.html"
-			
-		}
-		
-		function heade() {
-			console.log("head")
-			document.getElementById("bjjl").style.backgroundColor = ""
-			document.getElementById("ssjl").style.backgroundColor = ""
-			document.getElementById("sy").style.backgroundColor = "#1d4555"
-			window.location.href="map.html"
-		}
-		
-		function alarm() {
-			console.log("alarm")
-			document.getElementById("sy").style.backgroundColor = ""
-			document.getElementById("ssjl").style.backgroundColor = ""
-			document.getElementById("bjjl").style.backgroundColor = "#1d4555"
-			window.location.href="call.html"
-		}
-        $("#check_all").click(function () {//鼠标点击事件
-            $(".check_item").prop("checked", $(this).prop("checked"))//所有类为check_item的属性打√
-            //选中的时候返回true，否则为false
-            //使得id为check_all的原生属性值与class为check_item的保持一致
-        });
-        $(document).on("click", ".check_item", function () {//对class绑定一个点击事件
-            var flag = $(".check_item:checked").length == $(".check_item").length;
-            //如果选中的框数等于总框数的，那么flag的结果返回true
-            $("#check_all").prop("checked", flag)
-            //这时候让id为check_all，也就是全选按钮也为true，那么全选按钮也就打√了
-        })
+		</div>
+		</div>
+		<script>
+			document.getElementById("khname_a").innerText = "dfsafdasdf"
 
-        // 基于准备好的dom，初始化echarts实例  报警次数
-        
-        // 指定图表的配置项和数据
-		function initoption(){
-			console.log("初始化")
-			var myChart = echarts.init(document.getElementById('callNumberLine'));
-			var arrDate = [1201, 1201, 1201, 1201, 1201, 1201, 1201, 1201];
-			var option = {
-			    backgroundColor: '', //背景颜色透明
-			    tooltip: {
-			        trigger: 'axis', //鼠标经过提示
-			    },
-			    // legend: {
-			    //     icon: 'line',//icon为圆角矩形
-			    //     x: 'center',
-			    //     y: 'bottom',
-			    //     data: ['设备1', '设备2', '设备3'],
-			    //     textStyle: {//图例文字的样式
-			    //         color: '#fff',
-			    //         fontSize: 16
-			    //     }
-			    // },
-			    grid: {
-			        left: 0,
-			        top: '5%',
-			        left: 0,
-			        bottom: '5%',
-			        containLabel: true
-			    },
-			    xAxis: {
-			        type: 'category',
-			        data: arrDate,
-			        show: true, //隐藏x轴
-			        axisLabel: {
-			            textStyle: {
-			                color: '#a2a5b0'
-			            }
-			        }
-			    },
-			    yAxis: {
-			        type: 'value',
-			        splitLine: {
-			            show: false,
-			            // lineStyle: {
-			            //     color: ['#343a62'],
-			            //     width: 1,
-			            //     type: 'solid'
-			            // }
-			        }, //去除网格线
-			        show: true, //隐藏y轴,
-			        axisLabel: {
-			            textStyle: {
-			                color: '#a2a5b0'
-			            }
-			        }
-			    },
-			    // color: ['#1DB0B8', '#37C6C0', '#D0E9FF', '#c7353a', '#f5b91e'],
-			    series: [{
-			        name: '设备1',
-			        type: 'line',
-			        itemStyle: {
-			            normal: {
-			                color: '#3b78ff',
-			                // lineStyle: {        // 系列级个性化折线样式  
-			                //     width: 2,  
-			                //     type: 'solid',  
-			                //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
-			                //         offset: 0,  
-			                //         color: 'green'  
-			                //     }, {  
-			                //         offset: 1,  
-			                //         color: 'red'  
-			                //     }]),//线条渐变色  
-			                // }  
-			            },
-			            emphasis: {
-			                color: 'red',
-			                lineStyle: { // 系列级个性化折线样式  
-			                    width: 2,
-			                    type: 'dotted',
-			                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			                        offset: 0,
-			                        color: 'green'
-			                    }, {
-			                        offset: 1,
-			                        color: '#3b78ff'
-			                    }])
-			                }
-			            }
-			        }, //线条样式  
-			        areaStyle: {
-			            normal: {
-			                //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-			                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			
-			                    offset: 0,
-			                    color: 'rgba(49,95,199,1)'
-			                }, {
-			                    offset: 0.34,
-			                    color: 'rgba(49,95,199,0.55)'
-			                }, {
-			                    offset: 1,
-			                    color: 'rgba(49,95,199,0.0)'
-			                }])
-			
-			            }
-			        }, //区域颜色渐变
-			        data: sb1
-			    },
-			    {
-			        name: '设备2',
-			        type: 'line',
-			        itemStyle: {
-			            normal: {
-			                color: '#fa5656',
-			                // lineStyle: {        // 系列级个性化折线样式  
-			                //     width: 2,  
-			                //     type: 'solid',  
-			                //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
-			                //         offset: 0,  
-			                //         color: '#8470FF'  
-			                //     }, {  
-			                //         offset: 1,  
-			                //         color: '#008B45'  
-			                //     }]),//线条渐变色  
-			                // }  
-			            },
-			            emphasis: {
-			                color: '#008B45',
-			                lineStyle: { // 系列级个性化折线样式  
-			                    width: 2,
-			                    type: 'dotted',
-			                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			                        offset: 0,
-			                        color: '#00FFFF'
-			                    }, {
-			                        offset: 1,
-			                        color: '#fa5656'
-			                    }])
-			                }
-			            }
-			        }, //线条样式  
-			        areaStyle: {
-			            normal: {
-			                //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-			                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			
-			                    offset: 0,
-			                    color: 'rgba(228,81,80,1)'
-			                }, {
-			                    offset: 0.34,
-			                    color: 'rgba(228,81,80,0.55)'
-			                }, {
-			                    offset: 1,
-			                    color: 'rgba(228,81,80,0.00)'
-			                }])
-			
-			            }
-			        }, //区域颜色渐变
-			        data: sb2
-			    },
-			    {
-			        name: '设备3',
-			        type: 'line',
-			        itemStyle: {
-			
-			            normal: {
-			                color: '#fbc82a',
-			                // lineStyle: {        // 系列级个性化折线样式  
-			                //     width: 2,  
-			                //     type: 'solid',  
-			                //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
-			                //         offset: 0,  
-			                //         color: '#0000FF'  
-			                //     }, {  
-			                //         offset: 1,  
-			                //         color: '#CD5C5C'  
-			                //     }]),//线条渐变色  
-			                // }  
-			            },
-			            emphasis: {
-			                color: '#6A5ACD',
-			                lineStyle: { // 系列级个性化折线样式  
-			                    width: 2,
-			                    type: 'dotted',
-			                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			                        offset: 0,
-			                        color: '#1E90FF'
-			                    }, {
-			                        offset: 1,
-			                        color: '#fbc82a'
-			                    }])
-			                }
-			            }
-			        }, //线条样式 
-			        areaStyle: {
-			            normal: {
-			                //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-			                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-			
-			                    offset: 0,
-			                    color: 'rgba(224,180,41,1)'
-			                }, {
-			                    offset: 0.34,
-			                    color: 'rgba(224,180,41,0.35)'
-			                }, {
-			                    offset: 1,
-			                    color: 'rgba(224,180,41,0.00)'
-			                }])
-			
-			            }
-			        }, //区域颜色渐变
-			        data: sb3
-			    }
-			    ]
-			};
-			myChart.setOption(option);
-		}
-        
+			function jilu() {
+				console.log("jilu")
+				document.getElementById("ssjl").style.backgroundColor = "#1d4555"
+				document.getElementById("sy").style.backgroundColor = ""
+				document.getElementById("bjjl").style.backgroundColor = ""
+				window.location.href = "data-floor.html"
 
+			}
 
-        // 使用刚指定的配置项和数据显示图表。
-        
-       function dat1(s,x){
-		   var myChartTen = echarts.init(document.getElementById('toptenLine'));
-		   var arrDate =x;
-		   // 指定图表的配置项和数据
-		   var option = {
-		       backgroundColor: '', //背景颜色透明
-		       tooltip: {
-		           trigger: 'axis', //鼠标经过提示
-		       },
-		       // legend: {
-		       //     icon: 'line',//icon为圆角矩形
-		       //     x: 'center',
-		       //     y: 'bottom',
-		       //     data: ['设备1', '设备2', '设备3'],
-		       //     textStyle: {//图例文字的样式
-		       //         color: '#fff',
-		       //         fontSize: 16
-		       //     }
-		       // },
-		       grid: {
-		           left: 0,
-		           top: '5%',
-		           left: 0,
-		           bottom: '5%',
-		           containLabel: true
-		       },
-		       xAxis: {
-		           type: 'category',
-		           data: arrDate,
-		           boundaryGap: false,
-		           show: true, //隐藏x轴
-		           axisLabel: {
-		               textStyle: {
-		                   color: '#a2a5b0'
-		               }
-		           }
-		       },
-		       yAxis: {
-		           type: 'value',
-		           splitLine: {
-		               show: false,
-		               // lineStyle: {
-		               //     color: ['#343a62'],
-		               //     width: 1,
-		               //     type: 'solid'
-		               // }
-		           }, //去除网格线
-		           show: true, //隐藏y轴,
-		           axisLabel: {
-		               textStyle: {
-		                   color: '#a2a5b0'
-		               }
-		           }
-		       },
-		       series: [{
-		           name: '设备1',
-		           type: 'line',
-		           itemStyle: {
-		               normal: {
-		                   color: 'red',
-		                   // lineStyle: {        // 系列级个性化折线样式  
-		                   //     width: 2,  
-		                   //     type: 'solid',  
-		                   //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
-		                   //         offset: 0,  
-		                   //         color: 'green'  
-		                   //     }, {  
-		                   //         offset: 1,  
-		                   //         color: 'red'  
-		                   //     }]),//线条渐变色  
-		                   // }  
-		               },
-		               emphasis: {
-		                   color: 'red',
-		                   lineStyle: { // 系列级个性化折线样式  
-		                       width: 2,
-		                       type: 'dotted',
-		                       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-		                           offset: 0,
-		                           color: 'green'
-		                       }, {
-		                           offset: 1,
-		                           color: 'red'
-		                       }])
-		                   }
-		               }
-		           }, //线条样式  
-		           areaStyle: {
-		               normal: {
-		                   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-		                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-		   
-		                       offset: 0,
-		                       color: 'rgba(49,95,199,1)'
-		                   }, {
-		                       offset: 0.34,
-		                       color: 'rgba(49,95,199,0.55)'
-		                   }, {
-		                       offset: 1,
-		                       color: 'rgba(49,95,199,0.0)'
-		                   }])
-		   
-		               }
-		           }, //区域颜色渐变
-		           data: s
-		       },]
-		   };
-		   
-		   
-		   // 使用刚指定的配置项和数据显示图表。
-		   myChartTen.setOption(option);
-	   }
-        // top10
-       
+			function heade() {
+				console.log("head")
+				document.getElementById("bjjl").style.backgroundColor = ""
+				document.getElementById("ssjl").style.backgroundColor = ""
+				document.getElementById("sy").style.backgroundColor = "#1d4555"
+				window.location.href = "map.html"
+			}
 
-        $('#startTime').fdatepicker({
-            format: 'yyyy-mm-dd hh:ii',
-            pickTime: true
-        });
-        $('#endTime').fdatepicker({
-            format: 'yyyy-mm-dd hh:ii',
-            pickTime: true
-        });
+			function alarm() {
+				console.log("alarm")
+				document.getElementById("sy").style.backgroundColor = ""
+				document.getElementById("ssjl").style.backgroundColor = ""
+				document.getElementById("bjjl").style.backgroundColor = "#1d4555"
+				window.location.href = "call.html"
+			}
+			$("#check_all").click(function() { //鼠标点击事件
+				$(".check_item").prop("checked", $(this).prop("checked")) //所有类为check_item的属性打√
+				//选中的时候返回true，否则为false
+				//使得id为check_all的原生属性值与class为check_item的保持一致
+			});
+			$(document).on("click", ".check_item", function() { //对class绑定一个点击事件
+				var flag = $(".check_item:checked").length == $(".check_item").length;
+				//如果选中的框数等于总框数的，那么flag的结果返回true
+				$("#check_all").prop("checked", flag)
+				//这时候让id为check_all，也就是全选按钮也为true，那么全选按钮也就打√了
+			})
+
+			// 基于准备好的dom，初始化echarts实例  报警次数
+
+			// 指定图表的配置项和数据
+			function initoption() {
+				console.log("初始化")
+				var myChart = echarts.init(document.getElementById('callNumberLine'));
+				var arrDate = [1201, 1201, 1201, 1201, 1201, 1201, 1201, 1201];
+				var option = {
+					backgroundColor: '', //背景颜色透明
+					tooltip: {
+						trigger: 'axis', //鼠标经过提示
+					},
+					// legend: {
+					//     icon: 'line',//icon为圆角矩形
+					//     x: 'center',
+					//     y: 'bottom',
+					//     data: ['设备1', '设备2', '设备3'],
+					//     textStyle: {//图例文字的样式
+					//         color: '#fff',
+					//         fontSize: 16
+					//     }
+					// },
+					grid: {
+						left: 0,
+						top: '5%',
+						left: 0,
+						bottom: '5%',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'category',
+						data: arrDate,
+						show: true, //隐藏x轴
+						axisLabel: {
+							textStyle: {
+								color: '#a2a5b0'
+							}
+						}
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: false,
+							// lineStyle: {
+							//     color: ['#343a62'],
+							//     width: 1,
+							//     type: 'solid'
+							// }
+						}, //去除网格线
+						show: true, //隐藏y轴,
+						axisLabel: {
+							textStyle: {
+								color: '#a2a5b0'
+							}
+						}
+					},
+					// color: ['#1DB0B8', '#37C6C0', '#D0E9FF', '#c7353a', '#f5b91e'],
+					series: [{
+							name: '设备1',
+							type: 'line',
+							itemStyle: {
+								normal: {
+									color: '#3b78ff',
+									// lineStyle: {        // 系列级个性化折线样式  
+									//     width: 2,  
+									//     type: 'solid',  
+									//     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+									//         offset: 0,  
+									//         color: 'green'  
+									//     }, {  
+									//         offset: 1,  
+									//         color: 'red'  
+									//     }]),//线条渐变色  
+									// }  
+								},
+								emphasis: {
+									color: 'red',
+									lineStyle: { // 系列级个性化折线样式  
+										width: 2,
+										type: 'dotted',
+										color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+											offset: 0,
+											color: 'green'
+										}, {
+											offset: 1,
+											color: '#3b78ff'
+										}])
+									}
+								}
+							}, //线条样式  
+							areaStyle: {
+								normal: {
+									//颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+										offset: 0,
+										color: 'rgba(49,95,199,1)'
+									}, {
+										offset: 0.34,
+										color: 'rgba(49,95,199,0.55)'
+									}, {
+										offset: 1,
+										color: 'rgba(49,95,199,0.0)'
+									}])
+
+								}
+							}, //区域颜色渐变
+							data: sb1
+						},
+						{
+							name: '设备2',
+							type: 'line',
+							itemStyle: {
+								normal: {
+									color: '#fa5656',
+									// lineStyle: {        // 系列级个性化折线样式  
+									//     width: 2,  
+									//     type: 'solid',  
+									//     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+									//         offset: 0,  
+									//         color: '#8470FF'  
+									//     }, {  
+									//         offset: 1,  
+									//         color: '#008B45'  
+									//     }]),//线条渐变色  
+									// }  
+								},
+								emphasis: {
+									color: '#008B45',
+									lineStyle: { // 系列级个性化折线样式  
+										width: 2,
+										type: 'dotted',
+										color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+											offset: 0,
+											color: '#00FFFF'
+										}, {
+											offset: 1,
+											color: '#fa5656'
+										}])
+									}
+								}
+							}, //线条样式  
+							areaStyle: {
+								normal: {
+									//颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+										offset: 0,
+										color: 'rgba(228,81,80,1)'
+									}, {
+										offset: 0.34,
+										color: 'rgba(228,81,80,0.55)'
+									}, {
+										offset: 1,
+										color: 'rgba(228,81,80,0.00)'
+									}])
+
+								}
+							}, //区域颜色渐变
+							data: sb2
+						},
+						{
+							name: '设备3',
+							type: 'line',
+							itemStyle: {
+
+								normal: {
+									color: '#fbc82a',
+									// lineStyle: {        // 系列级个性化折线样式  
+									//     width: 2,  
+									//     type: 'solid',  
+									//     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+									//         offset: 0,  
+									//         color: '#0000FF'  
+									//     }, {  
+									//         offset: 1,  
+									//         color: '#CD5C5C'  
+									//     }]),//线条渐变色  
+									// }  
+								},
+								emphasis: {
+									color: '#6A5ACD',
+									lineStyle: { // 系列级个性化折线样式  
+										width: 2,
+										type: 'dotted',
+										color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+											offset: 0,
+											color: '#1E90FF'
+										}, {
+											offset: 1,
+											color: '#fbc82a'
+										}])
+									}
+								}
+							}, //线条样式 
+							areaStyle: {
+								normal: {
+									//颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+										offset: 0,
+										color: 'rgba(224,180,41,1)'
+									}, {
+										offset: 0.34,
+										color: 'rgba(224,180,41,0.35)'
+									}, {
+										offset: 1,
+										color: 'rgba(224,180,41,0.00)'
+									}])
+
+								}
+							}, //区域颜色渐变
+							data: sb3
+						}
+					]
+				};
+				myChart.setOption(option);
+			}
 
 
-    </script>
 
-</body>
+			// 使用刚指定的配置项和数据显示图表。
+
+			function dat1(s, x) {
+				var myChartTen = echarts.init(document.getElementById('toptenLine'));
+				var arrDate = x;
+				// 指定图表的配置项和数据
+				var option = {
+					backgroundColor: '', //背景颜色透明
+					tooltip: {
+						trigger: 'axis', //鼠标经过提示
+					},
+					// legend: {
+					//     icon: 'line',//icon为圆角矩形
+					//     x: 'center',
+					//     y: 'bottom',
+					//     data: ['设备1', '设备2', '设备3'],
+					//     textStyle: {//图例文字的样式
+					//         color: '#fff',
+					//         fontSize: 16
+					//     }
+					// },
+					grid: {
+						left: 0,
+						top: '5%',
+						left: 0,
+						bottom: '5%',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'category',
+						data: arrDate,
+						boundaryGap: false,
+						show: true, //隐藏x轴
+						axisLabel: {
+							textStyle: {
+								color: '#a2a5b0'
+							}
+						}
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: false,
+							// lineStyle: {
+							//     color: ['#343a62'],
+							//     width: 1,
+							//     type: 'solid'
+							// }
+						}, //去除网格线
+						show: true, //隐藏y轴,
+						axisLabel: {
+							textStyle: {
+								color: '#a2a5b0'
+							}
+						}
+					},
+					series: [{
+						name: '设备1',
+						type: 'line',
+						itemStyle: {
+							normal: {
+								color: 'red',
+								// lineStyle: {        // 系列级个性化折线样式  
+								//     width: 2,  
+								//     type: 'solid',  
+								//     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{  
+								//         offset: 0,  
+								//         color: 'green'  
+								//     }, {  
+								//         offset: 1,  
+								//         color: 'red'  
+								//     }]),//线条渐变色  
+								// }  
+							},
+							emphasis: {
+								color: 'red',
+								lineStyle: { // 系列级个性化折线样式  
+									width: 2,
+									type: 'dotted',
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: 'green'
+									}, {
+										offset: 1,
+										color: 'red'
+									}])
+								}
+							}
+						}, //线条样式  
+						areaStyle: {
+							normal: {
+								//颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+									offset: 0,
+									color: 'rgba(49,95,199,1)'
+								}, {
+									offset: 0.34,
+									color: 'rgba(49,95,199,0.55)'
+								}, {
+									offset: 1,
+									color: 'rgba(49,95,199,0.0)'
+								}])
+
+							}
+						}, //区域颜色渐变
+						data: s
+					}, ]
+				};
+
+
+				// 使用刚指定的配置项和数据显示图表。
+				myChartTen.setOption(option);
+			}
+			// top10
+
+
+			$('#startTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true
+			});
+			$('#endTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true
+			});
+		</script>
+
+	</body>
 
 </html>
