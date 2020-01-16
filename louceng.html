@@ -236,9 +236,29 @@
 					</div>
 				</div>
 			</div>
-			
-			<div id="planPic" style="position: relative;float: right;width: 85%;background-size: 1920px 969px;height: 969px;background-repeat:no-repeat;border-top: 2px solid #4e5f6b;opacity: 0.2;">
-				<div id="louceng_dev" style="position: absolute;top: 50px;left: 30px;">
+			<div id="dev_popuo" style="display: none;position: absolute;background-color: #696d78;color: #e4e5e7;border-radius: 10px;padding: 10px;">
+				<div id="" style="margin: 10px 0px;">
+					设备IMEI:<span id="deviceImei"></span>
+				</div>
+				<div id=""style="margin: 10px 0px;">
+					设备型号:<span id="deviceType" style="color: #06dae1;"></span>
+				</div>
+				<div id="" style="margin: 10px 0px;">
+					<label>量程:<span id="ranges" style="color: #06dae1;"></span></label>
+					<label>单位:<span id="unit" style="color: #06dae1;"></span></label>
+				</div>
+				<div id="" style="margin: 10px 0px;">
+					<label>状态:<span id="statusType" style="color: #2fc794;"></span></label>
+					<label>检测值:<span id="testPv" style="color: #06dae1;"></span></label>
+				</div>
+				<div id="" style="margin: 10px 0px;">
+					采集事件:<span id="cjsj"></span>
+				</div>
+			</div>
+			<div id="planPic" style="position: relative;float: right;width: 85%;background-size: 1920px 969px;height: 969px;background-repeat:no-repeat;border-top: 2px solid #4e5f6b;opacity: 0.3;">
+				
+				
+				<div id="louceng_dev" style="position: absolute;top: 50px;left: 30px;opacity: 1 !important;">
 					<!-- <img src="img/Kshebeiguzhang@1X.png" > -->
 				</div>
 				<div id="" onclick="allscreen()" style="position: absolute;right: 30px;top: 20px;">
@@ -317,5 +337,7 @@
 		document.getElementById("ssjl").style.backgroundColor = ""
 		document.getElementById("bjjl").style.backgroundColor = "#1d4555"
 	}
-	
+	 function tosingle(obj){
+	 	window.location.href="data-floor.html"
+	 }
 </script>
