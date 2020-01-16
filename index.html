@@ -66,8 +66,9 @@
 				
 			</div>
 		</div>
-
+		<script type="text/javascript" src="js/sshj.js"></script>
 		<script>
+			
 			var key = "";
 			var code = ""
 			$(function() {
@@ -75,10 +76,14 @@
 					url: "http://49.235.203.189:8087/jeecg-boot/sys/getCheckCode",
 					type: "get",
 					success: function(data) {
+						console.log(data)
 						key = data.result.key;
 						code = data.result.code;
 						$("#codeImg").text(data.result.code);
-					}
+					},
+					error:function(err){
+						cosnole.log(err)
+					},
 				});
 			})
 			$("#sendcode").click(function(){

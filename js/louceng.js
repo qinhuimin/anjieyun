@@ -66,12 +66,13 @@ function getloucengname() {
 			console.log(data)
 			if (data.success) {
 				let louceng = "";
-
+                
 				$.each(data.result, function(y, item) {
 
 
 
 					if (y == 0) {
+						 devinlouceng(item.id);
 						console.log("into")
 						$("#planPic").css("background-image", "url('" + imgurl + item.planPic + "')")
 					}
@@ -184,7 +185,7 @@ $("#dev_popuo").css("display","none")
 //设备上弹出的窗口  鼠标悬浮在上面
 function sbck(obj) {
 	console.log("in")
-	
+	console.log("in")
 	$("#dev_popuo").css("display","block")
 	$("#dev_popuo").css("top",parseInt(obj.yposition)-140+"px")
 	$("#dev_popuo").css("left",parseInt(obj.xposition)+220+"px")

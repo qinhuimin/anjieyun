@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>报警记录</title>
-    <link rel="stylesheet" href="./css/data.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="./js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="./css/foundation-datepicker.css">
-    <script src="./js/jquery-3.4.1.min.js"></script>
-    <script src="./js/date/jquery-1.11.3.min.js"></script>
-    <script src="./js/date/foundation-datepicker.js"></script>
-    <script src="./js/date/foundation-datepicker.zh-CN.js"></script>
-    <style>
-        #pagenumber {
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>报警记录</title>
+		<link rel="stylesheet" href="./css/data.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<script src="./js/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="./css/foundation-datepicker.css">
+		<script src="./js/jquery-3.4.1.min.js"></script>
+		<script src="./js/date/jquery-1.11.3.min.js"></script>
+		<script src="./js/date/foundation-datepicker.js"></script>
+		<script src="./js/date/foundation-datepicker.zh-CN.js"></script>
+		<style>
+			#pagenumber {
             display: inline-block;
             width: 30px;
             height: 15px;
@@ -34,39 +34,38 @@
             background-color: #FFF;
         }
     </style>
-</head>
-<!-- 实时数据无楼层 -->
+	</head>
+	<!-- 实时数据无楼层 -->
 
-<body>
-    <div class="main">
-        <div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
-            <img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
-            <div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
-                杰安全云
-            </div>
-            <div id="all"
-                style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
-                <div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
-                    首页
-                </div>
-                <div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
-                    实时记录
-                </div>
-                <div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
-                    报警记录
-                </div>
-            </div>
+	<body>
+		<div class="main">
+			<div id="" style="position: relative;height: 50px;width: 100%;background-color: #000000;z-index: 99999;">
+				<img src="img/logo.jpg" style="margin-top: 5px;margin-left: 20px;float: left;">
+				<div id="" style="float: left;font-size: 25px;color: #FFFFFF;line-height: 50px;">
+					杰安全云
+				</div>
+				<div id="all" style="float: left;color: #FFFFFF;font-size: 25px;line-height: 50px;width: 24%;text-align: center;margin-left: 27%;">
+					<div onclick="heade()" id="sy" style="width: 33.33%;float: left;">
+						首页
+					</div>
+					<div onclick="jilu()" id="ssjl" style="width: 33.33%;float: left;">
+						实时记录
+					</div>
+					<div onclick="alarm()" id="bjjl" style="width: 33.33%;float: left;background-color: #1d4555;">
+						报警记录
+					</div>
+				</div>
 
-            <div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
-                <img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
-                <span id="">
-                    当前登陆用户:河北诺言科技有限公司
-                </span>
+				<div id="" style="float: right;color: #FFFFFF;line-height: 50px;font-size: 15px;margin-right: 20px;">
+					<img src="img/shezhi@1x.png" style="margin-top: 13px;margin-left: 8px;float: right;">
+					<span id="">
+						当前登陆用户:河北诺言科技有限公司
+					</span>
 
 
-            </div>
-        </div>
-        <!-- <div class="top clearfix">
+				</div>
+			</div>
+			<!-- <div class="top clearfix">
             <div class="logo fl">
                 <img src="./img/logo@1x.png" alt="">
                 <span class="Logotext">是杰安全云</span>
@@ -84,79 +83,79 @@
                 <img src="./img/shezhi@1x.png" alt="">
             </div>
         </div> -->
-        <div class="line"></div>
-        <div class="search">
-            <div class="companyname fl">浙江杭州网络科技有限公司</div>
+			<div class="line"></div>
+			<div class="search">
+				<div class="companyname fl"></div>
 
-            <div class="type fl" id="floorid">
-                <span>选择楼层</span>
-                <select name="" id="selectFloor" style="background-color: #0a2336;">
-                </select>
-            </div>
-            <div class="equipment fl">
-                <span>选择设备</span>
-                <select name="" id="equipmentid">
-                    <option value="">探测器</option>
-                    <option value="">控制器</option>
-                    <option value="">输出模块</option>
-                </select>
-            </div>
-            <div class="date fl">
-                <span class="fl">报警时间</span>
-                <input type="text" class="fl" style="margin-left: 5px;color: #FFFFFF;" id="startTime">
-                <span class="connectline fl"></span>
-                <input type="text" class="fl" id="endTime" style="color: #FFFFFF;">
-            </div>
-            <div class="chaxun fl" style="margin-left: 100px;">
-                <button style="color:white; font-size: 14px;" id="searchTable">查询</button>
-            </div>
-            <div class="export fl">
-                <button style="color:white; font-size: 14px;" id="exportTable">EXCEL导出</button>
-            </div>
-        </div>
-        <div class="data fl " style="width:100%">
-            <table class="table1" style="width:100%">
-                <thead>
-                    <th style="width:50px">
-                        <input id="check_all" type="checkbox" style="background-color: transparent;">
-                    </th>
-                    <th>报警时间</th>
-                    <th>报警类型</th>
-                    <th>一级区域</th>
-                    <th>二级区域</th>
-                    <th>客户名称</th>
-                    <th>项目名称</th>
-                    <th>设置IMEI</th>
-                    <th>探测目标</th>
-                    <th>量程</th>
-                    <th>单位</th>
-                    <th>状态</th>
-                    <th>检测值</th>
-                </thead>
-                <tbody id="callRecordtbd">
-
-                </tbody>
-            </table>
-			<div id="" style="color: #FFFFFF;float: right;margin-top: 10px;">
-				<div id="" style="float: left;">
-					<span id="" onclick="pageup()">
-						上一页
-					</span>
-					<span id="currentpage">
-						1
-					</span>
-					<span id="">/</span>
-					<span id="pageall">
-						100
-					</span>
-					<span id="" onclick="pagedown()">
-						下一页
-					</span>
+				<div class="type fl" id="floorid">
+					<span>选择楼层</span>
+					<select name="" id="selectFloor" style="background-color: #0a2336;">
+					</select>
 				</div>
-				<input type="" name="" id="topage" value="" style="color: #FFFFFF;border: 1px solid #FFFFFF;width: 50px;float: left;" />
-				<button type="button" style="color: #FFFFFF;float: left;" onclick="sure()">跳转</button>
+				<div class="equipment fl">
+					<span>选择设备</span>
+					<select name="" id="equipmentid" style="background-color:#0a2336 ;">
+						<option value="">探测器</option>
+						<option value="">控制器</option>
+						<option value="">输出模块</option>
+					</select>
+				</div>
+				<div class="date fl">
+					<span class="fl">报警时间</span>
+					<input type="text" class="fl" style="margin-left: 5px;color: #FFFFFF;" id="startTime">
+					<span class="connectline fl"></span>
+					<input type="text" class="fl" id="endTime" style="color: #FFFFFF;">
+				</div>
+				<div class="chaxun fl" style="margin-left: 100px;">
+					<button style="color:white; font-size: 14px;" id="searchTable">查询</button>
+				</div>
+				<div class="export fl">
+					<button style="color:white; font-size: 14px;" id="exportTable">EXCEL导出</button>
+				</div>
 			</div>
-            <!-- <div class="paging">
+			<div class="data fl " style="width:100%">
+				<table class="table1" style="width:100%">
+					<thead>
+						<th style="width:50px">
+							<input id="check_all" type="checkbox" style="background-color: transparent;">
+						</th>
+						<th>报警时间</th>
+						<th>报警类型</th>
+						<th>一级区域</th>
+						<th>二级区域</th>
+						<th>客户名称</th>
+						<th>项目名称</th>
+						<th>设置IMEI</th>
+						<th>探测目标</th>
+						<th>量程</th>
+						<th>单位</th>
+						<th>状态</th>
+						<th>检测值</th>
+					</thead>
+					<tbody id="callRecordtbd">
+
+					</tbody>
+				</table>
+				<div id="" style="color: #FFFFFF;float: right;margin-top: 10px;">
+					<div id="" style="float: left;">
+						<span id="" onclick="pageup()">
+							上一页
+						</span>
+						<span id="currentpage">
+							1
+						</span>
+						<span id="">/</span>
+						<span id="pageall">
+							1
+						</span>
+						<span id="" onclick="pagedown()">
+							下一页
+						</span>
+					</div>
+					<input type="" name="" id="topage" value="" style="color: #FFFFFF;border: 1px solid #FFFFFF;width: 50px;float: left;" />
+					<button type="button" style="color: #FFFFFF;float: left;" onclick="sure()">跳转</button>
+				</div>
+				<!-- <div class="paging">
                 <div class="fr">
                     <span style="font-size: 12px;">1</span><span>-</span><span style="font-size: 12px;">8</span>
                     <span style="font-size: 12px;">共8条</span>
@@ -167,190 +166,188 @@
                     </select>
                 </div>
             </div> -->
-        </div>
-    </div>
-    <script>
-        var user = JSON.parse(localStorage.getItem("user"));
-        function jilu() {
-            console.log("jilu")
-            document.getElementById("ssjl").style.backgroundColor = "#1d4555"
-            document.getElementById("sy").style.backgroundColor = ""
-            document.getElementById("bjjl").style.backgroundColor = ""
-            window.location.href = "data-floor.html"
+			</div>
+		</div>
+		<script type="text/javascript" src="js/callfenye.js"></script>
+		<script>
+			var user = JSON.parse(localStorage.getItem("user"));
+			$(".companyname").html(localStorage.getItem("selcommay"))
 
-        }
+			function jilu() {
+				console.log("jilu")
+				document.getElementById("ssjl").style.backgroundColor = "#1d4555"
+				document.getElementById("sy").style.backgroundColor = ""
+				document.getElementById("bjjl").style.backgroundColor = ""
+				window.location.href = "data-floor.html"
 
-        function heade() {
-            console.log("head")
-            document.getElementById("bjjl").style.backgroundColor = ""
-            document.getElementById("ssjl").style.backgroundColor = ""
-            document.getElementById("sy").style.backgroundColor = "#1d4555"
-            window.location.href = "map.html"
-        }
+			}
 
-        function alarm() {
-            console.log("alarm")
-            document.getElementById("sy").style.backgroundColor = ""
-            document.getElementById("ssjl").style.backgroundColor = ""
-            document.getElementById("bjjl").style.backgroundColor = "#1d4555"
-            window.location.href = "call.html"
-        }
-        $("#check_all").click(function () {//鼠标点击事件
-            $(".check_item").prop("checked", $(this).prop("checked"))//所有类为check_item的属性打√
-            //选中的时候返回true，否则为false
-            //使得id为check_all的原生属性值与class为check_item的保持一致
-        });
-        $(document).on("click", ".check_item", function () {//对class绑定一个点击事件
-            var flag = $(".check_item:checked").length == $(".check_item").length;
-            //如果选中的框数等于总框数的，那么flag的结果返回true
-            $("#check_all").prop("checked", flag)
-            //这时候让id为check_all，也就是全选按钮也为true，那么全选按钮也就打√了
-        })
+			function heade() {
+				console.log("head")
+				document.getElementById("bjjl").style.backgroundColor = ""
+				document.getElementById("ssjl").style.backgroundColor = ""
+				document.getElementById("sy").style.backgroundColor = "#1d4555"
+				window.location.href = "map.html"
+			}
 
-        $('#startTime').fdatepicker({
-            format: 'yyyy-mm-dd hh:ii',
-            pickTime: true
-        });
-        $('#endTime').fdatepicker({
-            format: 'yyyy-mm-dd hh:ii',
-            pickTime: true
-        });
+			function alarm() {
+				console.log("alarm")
+				document.getElementById("sy").style.backgroundColor = ""
+				document.getElementById("ssjl").style.backgroundColor = ""
+				document.getElementById("bjjl").style.backgroundColor = "#1d4555"
+				window.location.href = "call.html"
+			}
+			$("#check_all").click(function() { //鼠标点击事件
+				$(".check_item").prop("checked", $(this).prop("checked")) //所有类为check_item的属性打√
+				//选中的时候返回true，否则为false
+				//使得id为check_all的原生属性值与class为check_item的保持一致
+			});
+			$(document).on("click", ".check_item", function() { //对class绑定一个点击事件
+				var flag = $(".check_item:checked").length == $(".check_item").length;
+				//如果选中的框数等于总框数的，那么flag的结果返回true
+				$("#check_all").prop("checked", flag)
+				//这时候让id为check_all，也就是全选按钮也为true，那么全选按钮也就打√了
+			})
 
-        // 下拉框选择楼层
+			$('#startTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii',
+				pickTime: true
+			});
+			$('#endTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii',
+				pickTime: true
+			});
 
-        $('#floorid').on('click', function () {
-            $('#selectFloor').empty()
-            // var req = { cid: 1008 }
-            $.ajax({
-                url: "http://49.235.203.189:8087/jeecg-boot/monitor/floorPlan/queryFloorNameAndIdByCid",
-                type: "GET",
-                dataType: "json", //返回格式为json
-                // contentType: "application/json",
-                // data: JSON.stringify(req),
-                data: { cid: 1001 },
-                beforeSend: function (request) {
-                    request.setRequestHeader("X-Access-Token",
-                        user.token
-                    );
-                },
-                success: function (data) {
-                    var floorResult = data.result
-                    floorResult.forEach((value) => {
-                        var opt = `<option>${value.floorName}</option>`
-                        console.log(opt)
-                        $('#selectFloor').append(opt)
-                    })
-                }
-            });
-        })
-        // 导出表
-        $('#exportTable').on('click', function () {
-            // 报警时间
-            $('.EalarmTime')
+			// 下拉框选择楼层
 
-            var req = {
-                alarmTime: ''
-            }
-            $.ajax({
-                url: "http://49.235.203.189:8087/jeecg-boot /monitor/alarmRecord/exportXls",
-                type: "GET",
-                dataType: "json", //返回格式为json
-                // contentType: "application/json",
-                data: JSON.stringify(req),
-                beforeSend: function (request) {
-                    request.setRequestHeader("X-Access-Token",
-                        user.token
-                    );
-                },
-                success: function (data) {
-                    console.log(data)
-                }
-            });
-        })
-        // 查询表
-        $('#searchTable').on('click', function () {
-            // 获取alarmTime_begin	报警开始时间
-            var alarmTime_begin = $('#startTime').val()
-            alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
-            var alarmTime_begin1 = new Date(alarmTime_begin);
-            alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
-            console.log(alarmTime_begin1)
-            // 获取alarmTime_end	报警结束时间
-            var alarmTime_end = $('#endTime').val()
-            alarmTime_end = alarmTime_end.replace(/-/g, '/');
-            var alarmTime_end1 = new Date(alarmTime_end);
-            alarmTime_end1 = alarmTime_end1.getTime() / 1000;
-            console.log(alarmTime_end1)
-            console.log(alarmTime_begin, alarmTime_end)
-            //获取oneAreaId省份id
-            console.log(user)
+			$('#floorid').on('click', function() {
+				$('#selectFloor').empty()
+				var khid = localStorage.getItem("khid")
+				$.ajax({
+					url: "http://49.235.203.189:8087/jeecg-boot/monitor/floorPlan/queryFloorNameAndIdByCid",
+					type: "GET",
+					dataType: "json", //返回格式为json
+					// contentType: "application/json",
+					// data: JSON.stringify(req),
+					data: {
+						cid: khid
+					},
+					beforeSend: function(request) {
+						request.setRequestHeader("X-Access-Token",
+							user.token
+						);
+					},
+					success: function(data) {
+						console.log(data)
+						var floorResult = data.result
+						floorResult.forEach((value) => {
+							var opt = `<option>${value.floorName}</option>`
+							console.log(opt)
+							$('#selectFloor').append(opt)
+						})
+					}
+				});
+			})
 
-            //获取twoAreaId城市id
+			// 导出表
+			$('#exportTable').on('click', function() {
+				// 报警时间
+				// console.log($('.EalarmTime').html())
+				// 报警类型  alarmTime_begin	
+				// console.log($('.Estatus').html())
+				// var req = {
+				//     alarmTime: ''
+				// }
+			})
+			// 查询表
+			// $('#searchTable').on('click', function() {
+			// 	$('#callRecordtbd').empty()
+			// 	// 获取alarmTime_begin	报警开始时间
+			// 	var alarmTime_begin = $('#startTime').val()
+			// 	alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
+			// 	var alarmTime_begin1 = new Date(alarmTime_begin);
+			// 	alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
+			// 	console.log(alarmTime_begin1)
+			// 	// 获取alarmTime_end	报警结束时间
+			// 	var alarmTime_end = $('#endTime').val()
+			// 	alarmTime_end = alarmTime_end.replace(/-/g, '/');
+			// 	var alarmTime_end1 = new Date(alarmTime_end);
+			// 	alarmTime_end1 = alarmTime_end1.getTime() / 1000;
+			// 	console.log(alarmTime_end1)
+			// 	console.log(alarmTime_begin, alarmTime_end)
+			// 	//获取oneAreaId省份id
+			// 	console.log(user)
+			// 	console.log(localStorage.getItem("provinceid"))
+			// 	var provinceid = localStorage.getItem("provinceid")
+			// 	//获取twoAreaId城市id
+			// 	console.log(localStorage.getItem("cityid"))
+			// 	var cityid = localStorage.getItem("cityid")
+			// 	// 客户IDcustomerId 1008
+			// 	console.log(localStorage.getItem("khid"))
+			// 	var khid = localStorage.getItem("khid")
+			// 	// 获取设备类型alarmDeviceType
+			// 	var alarmDeviceType = $('#equipmentid').val()
+			// 	// 获取楼层名floorName
+			// 	var selectFloorValue = $('#selectFloor').val()
+			// 	// 获取页码数pageNo
+			// 	// 获取每页数pageSize
+			// 	console.log(window.localStorage)
+			// 	var req = {
+			// 		// alarmTime_begin: alarmTime_begin1,
+			// 		// alarmTime_end: alarmTime_end1,
+			// 		// oneAreaId: provinceid,
+			// 		// twoAreaId: cityid,
+			// 		// customerId: khid,
+			// 		// alarmDeviceType: alarmDeviceType,
+			// 		// floorName: selectFloorValue,
+			// 		// pageNo: 1,
+			// 		pageSize: 5,
+			// 	}
+			// 	$.ajax({
+			// 		url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarm",
+			// 		type: "GET",
+			// 		dataType: "json", //返回格式为json
+			// 		// contentType: "application/json",
+			// 		data: req,
+			// 		beforeSend: function(request) {
+			// 			request.setRequestHeader("X-Access-Token",
+			// 				user.token
+			// 			);
+			// 		},
+			// 		success: function(data) {
+			// 			console.log(data)
+			// 			console.log(data.result.records)
+			// 			var callRecordtbdValue = data.result.records
+			// 			callRecordtbdValue.forEach((value) => {
+			// 				var tr =
+			// 					` <tr>
+			//                          <td style="width:50px">
+			//                              <input class="check_item" type="checkbox" style="background-color: transparent;">
+			//                          </td>
+			//                          <td class="EalarmTime">${value.alarmTime}</td>     //报警时间
+			//                          <td class="Estatus">${value.tstatus}</td>       //警报类型
+			//                          <td class="EoneAreaName">${value.oneAreaName}</td>   //省份
+			//                          <td class="EtwoAreaName">${value.twoAreaName}</td>   //城市
+			//                          <td class="Ename">${value.name}</td>          //客户名称
+			//                          <td class="EporjectName">${value.porjectName}</td>   //项目名称
+			//                          <td class="EalarmDeviceImei">${value.alarmDeviceImei}</td>   //设备IMEI
+			//                          <td class="EdetectionTarget">${value.detectionTarget}</td>   //探测目标
+			//                          <td class="Eranges">${value.ranges}</td>            //量程
+			//                          <td class="Eunit">${value.unit}</td>              //单位
+			//                          <td class="EalarmState">${value.alarmState}</td>        //状态
+			//                          <td class="EalarmPv">${value.alarmPv}</td>           //检测值
 
-            // 客户IDcustomerId 1008
+			//                      </tr>`
+			// 				$('#callRecordtbd').append(tr)
+			// 			})
 
-            // 获取设备类型alarmDeviceType
+			// 		}
+			// 	});
+			// })
 
-            // 获取楼层名floorName
-            var selectFloorValue = $('#selectFloor').val()
-            console.log(selectFloorValue)
+			// 分页
+		</script>
 
-            // 获取页码数pageNo
-
-            // 获取每页数pageSize
-            console.log(window.localStorage)
-            var req = {
-                // alarmTime_begin: alarmTime_begin1,
-                // alarmTime_end: alarmTime_end1,
-                // oneAreaId: '',
-                // twoAreaId: '',
-                // customerId: 1008,
-                // alarmDeviceType: '',
-                // floorName: selectFloorValue,
-                pageNo: 1,
-                pageSize: 5,
-            }
-            $.ajax({
-                url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarm",
-                type: "GET",
-                dataType: "json", //返回格式为json
-                // contentType: "application/json",
-                 data: req,
-                beforeSend: function (request) {
-                    request.setRequestHeader("X-Access-Token",
-                        user.token
-                    );
-                },
-                success: function (data) {
-                    console.log(data.result.records)
-                    var callRecordtbdValue = data.result.records
-                    callRecordtbdValue.forEach((value) => {
-                        var tr = ` <tr>
-                            <td style="width:50px">
-                                <input class="check_item" type="checkbox" style="background-color: transparent;">
-                            </td>
-                            <td class="EalarmTime">${value.alarmTime}</td>     //报警时间
-                            <td class="Estatus">${value.tstatus}</td>       //警报类型
-                            <td class="EoneAreaName">${value.oneAreaName}</td>   //省份
-                            <td class="EtwoAreaName">${value.twoAreaName}</td>   //城市
-                            <td class="Ename">${value.name}</td>          //客户名称
-                            <td class="EporjectName">${value.porjectName}</td>   //项目名称
-                            <td class="EalarmDeviceImei">${value.alarmDeviceImei}</td>   //设备IMEI
-                            <td class="EdetectionTarget">${value.detectionTarget}</td>   //探测目标
-                            <td class="Eranges">${value.ranges}</td>            //量程
-                            <td class="Eunit">${value.unit}</td>              //单位
-                            <td class="EalarmState">${value.alarmState}</td>        //状态
-                            <td class="EalarmPv">${value.alarmPv}</td>           //检测值
-
-                        </tr>`
-                        $('#callRecordtbd').append(tr)
-                    })
-
-                }
-            });
-        })
-    </script>
-
-</body>
+	</body>
 
 </html>
