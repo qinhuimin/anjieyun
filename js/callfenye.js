@@ -33,9 +33,49 @@ function pageup() {
 }
 
 function pagelimit(num) {
+	
+	$('#callRecordtbd').empty()
+	// 获取alarmTime_begin	报警开始时间
+	var alarmTime_begin = $('#startTime').val()
+	alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
+	var alarmTime_begin1 = new Date(alarmTime_begin);
+	alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
+	console.log(alarmTime_begin1)
+	// 获取alarmTime_end	报警结束时间
+	var alarmTime_end = $('#endTime').val()
+	alarmTime_end = alarmTime_end.replace(/-/g, '/');
+	var alarmTime_end1 = new Date(alarmTime_end);
+	alarmTime_end1 = alarmTime_end1.getTime() / 1000;
+	console.log(alarmTime_end1)
+	console.log(alarmTime_begin, alarmTime_end)
+	//获取oneAreaId省份id
+	console.log(user)
+	console.log(localStorage.getItem("provinceid"))
+	var provinceid = localStorage.getItem("provinceid")
+	//获取twoAreaId城市id
+	console.log(localStorage.getItem("cityid"))
+	var cityid = localStorage.getItem("cityid")
+	// 客户IDcustomerId 1008
+	console.log(localStorage.getItem("khid"))
+	var khid = localStorage.getItem("khid")
+	// 获取设备类型alarmDeviceType
+	var alarmDeviceType = $('#equipmentid').val()
+	// 获取楼层名floorName
+	var selectFloorValue = $('#selectFloor').val()
+	// 获取页码数pageNo
+	// 获取每页数pageSize
+	console.log(window.localStorage)
 	var req = {
-		pageNo: num,
-	}
+			alarmTime_begin: alarmTime_begin1,
+			alarmTime_end: alarmTime_end1,
+			oneAreaId: provinceid,
+			twoAreaId: cityid,
+			customerId: khid,
+			alarmDeviceType: alarmDeviceType,
+			floorName: selectFloorValue,
+			pageNo: num,
+			pageSize: 8,
+		}
 	$.ajax({
 		url: "http://49.235.203.189:8087/jeecg-boot/monitor/alarmRecord/queryAlarm",
 		type: "GET",
@@ -88,49 +128,48 @@ function pagelimit(num) {
 
 }
 $('#searchTable').on('click', function() {
-	$('#callRecordtbd').empty()
-	// 获取alarmTime_begin	报警开始时间
-	var alarmTime_begin = $('#startTime').val()
-	alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
-	var alarmTime_begin1 = new Date(alarmTime_begin);
-	alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
-	console.log(alarmTime_begin1)
-	// 获取alarmTime_end	报警结束时间
-	var alarmTime_end = $('#endTime').val()
-	alarmTime_end = alarmTime_end.replace(/-/g, '/');
-	var alarmTime_end1 = new Date(alarmTime_end);
-	alarmTime_end1 = alarmTime_end1.getTime() / 1000;
-	console.log(alarmTime_end1)
-	console.log(alarmTime_begin, alarmTime_end)
-	//获取oneAreaId省份id
-	console.log(user)
-	console.log(localStorage.getItem("provinceid"))
-	var provinceid = localStorage.getItem("provinceid")
-	//获取twoAreaId城市id
-	console.log(localStorage.getItem("cityid"))
-	var cityid = localStorage.getItem("cityid")
-	// 客户IDcustomerId 1008
-	console.log(localStorage.getItem("khid"))
-	var khid = localStorage.getItem("khid")
-	// 获取设备类型alarmDeviceType
-	var alarmDeviceType = $('#equipmentid').val()
-	// 获取楼层名floorName
-	var selectFloorValue = $('#selectFloor').val()
-	// 获取页码数pageNo
-	// 获取每页数pageSize
-	console.log(window.localStorage)
-	var req = {
-		alarmTime_begin: alarmTime_begin1,
-		alarmTime_end: alarmTime_end1,
-		oneAreaId: provinceid,
-		twoAreaId: cityid,
-		customerId: khid,
-		alarmDeviceType: alarmDeviceType,
-		floorName: selectFloorValue,
-		pageNo: num,
-		pageSize: 8,
-	}
-	 pagelimit(1)
+	pagelimit(1)
+// 	$('#callRecordtbd').empty()
+// 	// 获取alarmTime_begin	报警开始时间
+// 	var alarmTime_begin = $('#startTime').val()
+// 	alarmTime_begin = alarmTime_begin.replace(/-/g, '/');
+// 	var alarmTime_begin1 = new Date(alarmTime_begin);
+// 	alarmTime_begin1 = alarmTime_begin1.getTime() / 1000;
+// 	console.log(alarmTime_begin1)
+// 	// 获取alarmTime_end	报警结束时间
+// 	var alarmTime_end = $('#endTime').val()
+// 	alarmTime_end = alarmTime_end.replace(/-/g, '/');
+// 	var alarmTime_end1 = new Date(alarmTime_end);
+// 	alarmTime_end1 = alarmTime_end1.getTime() / 1000;
+// 	console.log(alarmTime_end1)
+// 	console.log(alarmTime_begin, alarmTime_end)
+// 	//获取oneAreaId省份id
+// 	console.log(user)
+// 	console.log(localStorage.getItem("provinceid"))
+// 	var provinceid = localStorage.getItem("provinceid")
+// 	//获取twoAreaId城市id
+// 	console.log(localStorage.getItem("cityid"))
+// 	var cityid = localStorage.getItem("cityid")
+// 	// 客户IDcustomerId 1008
+// 	console.log(localStorage.getItem("khid"))
+// 	var khid = localStorage.getItem("khid")
+// 	// 获取设备类型alarmDeviceType
+// 	var alarmDeviceType = $('#equipmentid').val()
+// 	// 获取楼层名floorName
+// 	var selectFloorValue = $('#selectFloor').val()
+	
+// 	console.log(window.localStorage)
+// 	var req = {
+// 		alarmTime_begin: alarmTime_begin1,
+// 		alarmTime_end: alarmTime_end1,
+// 		oneAreaId: provinceid,
+// 		twoAreaId: cityid,
+// 		customerId: khid,
+// 		alarmDeviceType: alarmDeviceType,
+// 		floorName: selectFloorValue,
+// 		pageNo: num,
+// 		pageSize: 8,
+// 	}
 })
 
 
